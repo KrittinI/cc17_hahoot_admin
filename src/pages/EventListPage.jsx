@@ -1,6 +1,6 @@
-import AdminMenu from '../../layouts/AdminMenu';
-import AdminSideBar from '../../layouts/AdminSideBar';
-import AdminTable from '../../layouts/AdminTable';
+import AdminMenu from '../layouts/AdminMenu';
+import AdminSideBar from '../layouts/AdminSideBar';
+import AdminTable from '../layouts/AdminTable';
 
 export default function EventListPage() {
   return (

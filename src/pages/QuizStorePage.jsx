@@ -1,13 +1,9 @@
-import AdminMenu from '../../layouts/AdminMenu';
-import AdminSideBar from '../../layouts/AdminSideBar';
-import AdminTable from '../../layouts/AdminTable';
+import AdminSideBar from '../layouts/AdminSideBar';
+import AdminTable from '../layouts/AdminTable';
 
 export default function QuizStorePage() {
   return (
     <div>
-      {/* <div>
-        <AdminMenu />
-      </div> */}
       <div className='flex'>
         <div className='px-20 py-8 border border-yellow w-2/3'>
           <AdminTable />

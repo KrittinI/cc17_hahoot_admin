@@ -5,7 +5,7 @@ import HomePage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AdminHomePage from '../pages/AdminHomePage';
-// import EventListPage from '../pages/admin/EventListPage'
+import EventListPage from '../pages/EventListPage'
 // import QuizStorePage from '../pages/admin/QuizStorePage';
 // import UserProfilePage from '../pages/admin/UserProfilePage';
 
@@ -31,18 +31,18 @@ const router = createBrowserRouter([
         path: '/admin',
         element: <AdminHomePage />,
       },
-      // {
-      //   path: '/admin/eventList',
-      //   element: <EventListPage />,
-      // },
-      // {
-      //   path: '/admin/quizStore',
-      //   element: <QuizStorePage />,
-      // },
-      // {
-      //   path: '/admin/userProfile',
-      //   element: <UserProfilePage />,
-      // },
+      {
+        path: '/admin/eventList',
+        element: <EventListPage />,
+      },
+      //   {
+      //     path: '/admin/quizStore',
+      //     element: <QuizStorePage />,
+      //   },
+      //   {
+      //     path: '/admin/userProfile',
+      //     element: <UserProfilePage />,
+      //   },
     ],
   },
 ]);

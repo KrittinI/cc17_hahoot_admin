@@ -39,7 +39,7 @@ export default function AdminMenu() {
   ];
 
   return (
-    <div className='flex gap-8 justify-between items-center py-8 w-[80%] mx-auto'>
+    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
       {allTab.map((tab) => (
         <MenuTab
           key={tab.id}

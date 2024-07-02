@@ -8,6 +8,7 @@ const bgMap = {
   avatar: "",
   disable: "bg-gray-200",
   black: "bg-black text-white rounded-[8px] hover:bg-blue  ",
+  white: "bg-white rounded-[8px] hover:bg-gray-200  ",
 };
 
 const colorMap = {

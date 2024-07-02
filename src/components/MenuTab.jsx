@@ -1,21 +1,16 @@
 import Button from "./Button";
 
-export default function MenuTab({
-  tabLink,
-  tabIcon,
-  tabName,
-  tabNumber,
-}) {
+export default function MenuTab({ tab, onClick }) {
   return (
-    <Button bg={`white`}>
-      <div className="flex">
-        <div className='bg-orange-200 w-full h-full'>{tabIcon}</div>
-        <div className='w-full h-full flex flex-col justify-center gap-1'>
-          <div className=' text-[#718EBF] text-base flex justify-start'>
-            {tabName}
+    <Button bg={`white`} onClick={onClick}>
+      <div className="flex justify-center items-center gap-2">
+        <div className='bg-orange-200 w-[64px] h-[64px]'>{tab?.icon}</div>
+        <div className='w-full h-full flex flex-col items-start gap-1'>
+          <div className=' text-[#718EBF] text-md'>
+            {tab?.name}
           </div>
-          <div className=' text-[#232323] text-xl flex justify-start'>
-            {tabNumber}
+          <div className=' text-[#232323] text-xl'>
+            {tab?.number}
           </div>
         </div>
       </div>

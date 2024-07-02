@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import MenuTab from '../components/MenuTab';
 
 export default function AdminMenu() {
+  const navigate = useNavigate()
+
+  const handleClick = (path) => {
+    navigate(path)
+  }
   const allTab = [
     {
       id: 4,
@@ -37,10 +43,8 @@ export default function AdminMenu() {
       {allTab.map((tab) => (
         <MenuTab
           key={tab.id}
-          tabLink={tab.link}
-          tabIcon={tab.icon}
-          tabName={tab.name}
-          tabNumber={tab.number}
+          onClick={() => handleClick(tab.link)}
+          tab={tab}
         />
       ))}
     </div>

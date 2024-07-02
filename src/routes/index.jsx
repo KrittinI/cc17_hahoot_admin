@@ -35,14 +35,14 @@ const router = createBrowserRouter([
         path: '/admin/eventList',
         element: <EventListPage />,
       },
-      //   {
-      //     path: '/admin/quizStore',
-      //     element: <QuizStorePage />,
-      //   },
-      //   {
-      //     path: '/admin/userProfile',
-      //     element: <UserProfilePage />,
-      //   },
+      {
+        path: '/admin/quizStore',
+        element: <QuizStorePage />,
+      },
+      {
+        path: '/admin/userProfile',
+        element: <UserProfilePage />,
+      },
     ],
   },
 ]);

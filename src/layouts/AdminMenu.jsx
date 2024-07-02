@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import MenuTab from '../components/MenuTab';
 import { IoPerson } from 'react-icons/io5';
 import { PiBagFill } from 'react-icons/pi';
@@ -5,6 +6,11 @@ import { FaScrewdriverWrench } from 'react-icons/fa6';
 import Logo from '../assets/icon-hh.png';
 
 export default function AdminMenu() {
+  const navigate = useNavigate();
+
+  const handleClick = (path) => {
+    navigate(path);
+  };
   const allTab = [
     {
       id: 4,
@@ -50,16 +56,9 @@ export default function AdminMenu() {
   ];
 
   return (
-    <div className='flex justify-between px-20 py-8 mt-20 '>
+    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
       {allTab.map((tab) => (
-        <div key={tab.id}>
-          <MenuTab
-            tabLink={tab.link}
-            tabIcon={tab.icon}
-            tabName={tab.name}
-            tabNumber={tab.number}
-          />
-        </div>
+        <MenuTab key={tab.id} onClick={() => handleClick(tab.link)} tab={tab} />
       ))}
     </div>
   );

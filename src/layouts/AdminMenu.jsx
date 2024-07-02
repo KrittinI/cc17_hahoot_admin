@@ -14,42 +14,49 @@ export default function AdminMenu() {
   const allTab = [
     {
       id: 4,
-      name: 'Home page',
+      name: 'Overview',
       number: 100,
       icon: (
-        <IoPerson className='bg-[#E7EDFF] text-[#396AFF] rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
+        <IoPerson className='bg-[#E7EDFF] text-[#396AFF] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin',
     },
     {
       id: 1,
-      name: 'User Profile',
+      name: 'Users',
       number: 200,
       icon: (
-        // <IoPersonCircleSharp className='bg-[#FFF5D9] text-[#396AFF] rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
         <img
           src={Logo}
-          className='bg-[#FFF5D9]  rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle'
+          className='bg-[#FFF5D9]  rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle'
         />
-        // <Logo />
       ),
       link: '/admin/userProfile',
     },
     {
       id: 2,
-      name: 'Event list',
+      name: 'Events',
       number: 300,
       icon: (
-        <PiBagFill className='bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
+        <PiBagFill className='bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin/eventList',
     },
     {
       id: 3,
-      name: 'Quiz store',
+      name: 'Questions',
       number: 400,
       icon: (
-        <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
+        <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
+      ),
+      link: '/admin/quizStore',
+    },
+    {
+      id: 5,
+      name: 'Rooms',
+      number: 400,
+      icon: (
+        <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin/quizStore',
     },

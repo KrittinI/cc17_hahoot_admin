@@ -1,25 +1,21 @@
 import ActivityCard from '../components/ActivityCard';
-import ContentCard from '../components/ContentCard';
-import QuizCard from '../components/QuizCard';
 import StatisticCard from '../components/StatisticCard';
 import AllQuizCard from './AllQuizCard';
 
 export default function AdminFeed() {
   return (
-    <div className='flex flex-col px-20 py-8'>
-      <div className='flex flex-wrap'>
-        <div className='border border-yellow w-2/3 p-8 flex flex-col'>
-          <h1 className='text-[#343C6A] text-base'>Total Activity </h1>
-          <br />
-          <ActivityCard />
-        </div>
-        <div className='border border-yellow w-1/3 p-8 flex flex-col'>
-          <h1 className='text-[#343C6A] text-base'> Expense Statistics</h1>
-          <br />
-          <StatisticCard />
-        </div>
+    <div className='grid grid-cols-3 gap-x-2 gap-y-4'>
+      <div className='bg-white rounded-xl col-span-2 flex flex-col gap-2 p-4'>
+        <h1 className='text-[#343C6A] w-full text-base'>Total</h1>
+        <ActivityCard />
       </div>
-      <AllQuizCard />
+      <div className='bg-white rounded-xl col-span-1 flex flex-col gap-2 p-4 justify-between'>
+        <h1 className='text-[#343C6A] w-full text-base'> Expense Statistics</h1>
+        <StatisticCard />
+      </div>
+      <div className='col-span-3'>
+        <AllQuizCard />
+      </div>
     </div>
   );
 }

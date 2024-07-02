@@ -1,12 +1,9 @@
-import AdminFeed from '../layouts/AdminFeed';
-// import AdminMenu from '../layouts/AdminMenu';
+import AdminFeed from "../layouts/AdminFeed";
 
 export default function AdminHomePage() {
   return (
-    <div>
-      <div>
-        <AdminFeed />
-      </div>
+    <div className='w-[65%] mx-auto'>
+      <AdminFeed />
     </div>
   );
 }

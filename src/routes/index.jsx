@@ -5,9 +5,9 @@ import HomePage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AdminHomePage from '../pages/AdminHomePage';
-import EventListPage from '../pages/EventListPage'
-// import QuizStorePage from '../pages/admin/QuizStorePage';
-// import UserProfilePage from '../pages/admin/UserProfilePage';
+import EventListPage from '../pages/EventListPage';
+import QuizStorePage from '../pages/QuizStorePage';
+import UserProfilePage from '../pages/UserProfilePage';
 
 const router = createBrowserRouter([
   {

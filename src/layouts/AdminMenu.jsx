@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import MenuTab from '../components/MenuTab';
 
 export default function AdminMenu() {
+  const navigate = useNavigate()
+
+  const handleClick = (path) => {
+    navigate(path)
+  }
   const allTab = [
     {
       id: 4,
@@ -33,16 +39,13 @@ export default function AdminMenu() {
   ];
 
   return (
-    <div className='flex gap-8 justify-between px-20 py-8 mt-20 '>
+    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
       {allTab.map((tab) => (
-        <div key={tab.id}>
-          <MenuTab
-            tabLink={tab.link}
-            tabIcon={tab.icon}
-            tabName={tab.name}
-            tabNumber={tab.number}
-          />
-        </div>
+        <MenuTab
+          key={tab.id}
+          onClick={() => handleClick(tab.link)}
+          tab={tab}
+        />
       ))}
     </div>
   );

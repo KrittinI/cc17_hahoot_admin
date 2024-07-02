@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from '../assets/hh-hero.png';
 
-export default function ContentCard() {
+export default function ContentCard({ message }) {
   return (
     <div className=' p-8 rounded-3xl flex flex-col gap-16'>
       <div className='flex flex-col gap-8'>
@@ -10,14 +10,14 @@ export default function ContentCard() {
           {/* =================================================================== */}
           <div className='w-1/2'>
             <h1 className='text-xl'>Detail</h1>
-            <p className='text-blue'>{message.detail}</p>
+            <p className='text-blue'>{message?.detail}</p>
           </div>
         </div>
         {/* ########################################################################################### */}
         <div className='flex gap-8'>
           <div className='w-1/2'>
             <h1 className='text-xl'>Title</h1>
-            <p className='text-blue'>{message.title}</p>
+            <p className='text-blue'>{message?.title}</p>
           </div>
           {/* =================================================================== */}
           <div className='w-1/2'>

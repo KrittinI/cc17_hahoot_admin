@@ -10,7 +10,7 @@ const dataContent = {
   detail: 'This is Detail message',
 };
 
-export default function AllQuizCard({ message }) {
+export default function AllQuizCard() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(dataContent);
 

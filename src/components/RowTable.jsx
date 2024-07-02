@@ -2,8 +2,29 @@ import { useState } from 'react';
 import Modal from './Modal';
 import ModalTable from './ModalTable';
 
-export default function RowTable({ item }) {
+export default function RowTable({
+  item,
+  onBanUser,
+  onUnBanUser,
+  setSelectedUser,
+}) {
   const [open, setOpen] = useState(false);
+  const [tableRow, setTableRow] = useState([]);
+
+  const handleBanClick = () => {
+    setSelectedUser(item);
+    setOpen(true);
+  };
+
+  const handleConfirmBan = () => {
+    onBanUser(item);
+    setOpen(false);
+  };
+
+  const handleConfirmUnBan = () => {
+    onUnBanUser(item);
+    setOpen(false);
+  };
 
   return (
     <div className='grid grid-cols-10 gap-4 text-center py-6 border-b items-center'>
@@ -14,17 +35,31 @@ export default function RowTable({ item }) {
       <div className='col-span-1'>{item.detail5}</div>
       <div className='flex justify-center items-center gap-8'>
         <button
-          className='bg-darkred text-white p-3 rounded-xl hover:bg-pink-500'
-          onClick={() => setOpen(true)}
+          className={`text-white p-3 rounded-xl min-w-24  ${
+            item.detail5 === 'Active'
+              ? 'bg-darkred hover:bg-pink-500'
+              : 'bg-green hover:bg-lime-200'
+          }`}
+          onClick={handleBanClick}
         >
-          BANNED
+          {item.detail5 === 'Active' ? 'Banned' : 'Unbanned'}
         </button>
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-          title={`Are you want to Banning this user`}
+          title={
+            item.detail5 === 'Active'
+              ? `Are you want to Banning this user`
+              : `Are you want to Unbanning this user`
+          }
         >
-          <ModalTable onCancel={() => setOpen(false)} />
+          <ModalTable
+            onConfirm={
+              item.detail5 === 'Active' ? handleConfirmBan : handleConfirmUnBan
+            }
+            onCancel={() => setOpen(false)}
+            isActive={item.detail5 === 'Active'}
+          />
         </Modal>
       </div>
     </div>

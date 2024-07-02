@@ -17,7 +17,7 @@ export default function Modal({ width = 30, title, children, open, onClose }) {
       {open
         ? createPortal(
             <>
-              <div className='fixed inset-0 bg-white opacity-40 z-30'></div>
+              <div className='fixed inset-0 bg-[#282829] opacity-40 z-30'></div>
               <div className='fixed inset-0 z-40' onMouseDown={onClose}>
                 <div className='flex justify-center items-center min-h-screen'>
                   <div

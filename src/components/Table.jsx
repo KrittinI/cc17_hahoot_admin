@@ -224,31 +224,19 @@ export default function Table() {
   const [selectedUser, setSelectedUser] = useState(null);
   const location = useLocation();
 
-  const handleBanUser = () => {
-    setTableData((prevData) =>
-      prevData.map((user) =>
-        user === selectedUser ? { ...user, detail5: 'InActive' } : user
-      )
-    );
-    handleCloseModal();
-  };
-
   useEffect(() => {
     switch (location.pathname) {
       case '/admin/userProfile':
         setTableTopic(userTable);
         setTableData(dataUserTable);
-        // setTableDetail(dataUserTable);
         break;
       case '/admin/quizStore':
         setTableTopic(quizTable);
         setTableData(dataQuizTable);
-        // setTableDetail(dataQuizTable);
         break;
       case '/admin/eventList':
         setTableTopic(eventTable);
         setTableData(dataEventTable);
-        // setTableDetail(dataEventTable);
         break;
       default:
         setTableTopic([]);
@@ -257,6 +245,18 @@ export default function Table() {
     }
   }, [location.pathname]);
 
+  // ################################################
+  const handleBanUser = (user) => {
+    setTableData((prevData) =>
+      prevData.map((u) => (u === user ? { ...u, detail5: 'InActive' } : u))
+    );
+  };
+
+  const handleUnBanUser = (user) => {
+    setTableData((prevData) =>
+      prevData.map((u) => (u === user ? { ...u, detail5: 'Active' } : u))
+    );
+  };
   // ################################################
   return (
     <div>
@@ -271,9 +271,16 @@ export default function Table() {
             ))}
           </div>
         </div>
+        {/*################################################ */}
         <hr className='my-4' />
         {tableData.map((item, index) => (
-          <RowTable key={index} item={item} />
+          <RowTable
+            key={index}
+            item={item}
+            onBanUser={handleBanUser}
+            onUnBanUser={handleUnBanUser}
+            setSelectedUser={setSelectedUser}
+          />
         ))}
       </div>
     </div>

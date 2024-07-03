@@ -1,5 +1,3 @@
-import Image from '../assets/editIcon.png';
-
 export default function ContentCard({ dataContent }) {
   return (
     <>

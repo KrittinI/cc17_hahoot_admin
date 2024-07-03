@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ButtonAdmin from '../../../components/ButtonAdmin';
-import ContentCard from '../../../components/ContentCard';
+import ButtonAdmin from './ButtonAdmin';
+import ContentCard from './ContentCard';
 import Modal from '../../../components/Modal';
-import QuizCard from '../../../components/QuizCard';
+import QuizCard from './QuizCard';
 import EditHeroForm from './EditHeroForm';
 import imageQuiz from '../../../assets/editIcon.png';
 import imageProfile from '../../../assets/user.png';

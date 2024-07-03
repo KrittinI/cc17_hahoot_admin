@@ -4,6 +4,7 @@ import { IoPerson } from 'react-icons/io5';
 import { PiBagFill } from 'react-icons/pi';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
 import Logo from '../assets/icon-hh.png';
+import { FaDiceD6 } from 'react-icons/fa';
 
 export default function AdminMenu() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function AdminMenu() {
   };
   const allTab = [
     {
-      id: 4,
+      id: 1,
       name: 'Home page',
       number: 100,
       icon: (
@@ -22,7 +23,7 @@ export default function AdminMenu() {
       link: '/admin',
     },
     {
-      id: 1,
+      id: 2,
       name: 'User Profile',
       number: 200,
       icon: (
@@ -36,7 +37,7 @@ export default function AdminMenu() {
       link: '/admin/userProfile',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Event list',
       number: 300,
       icon: (
@@ -45,7 +46,7 @@ export default function AdminMenu() {
       link: '/admin/eventList',
     },
     {
-      id: 3,
+      id: 4,
       name: 'Quiz store',
       number: 400,
       icon: (
@@ -53,12 +54,25 @@ export default function AdminMenu() {
       ),
       link: '/admin/quizStore',
     },
+    {
+      id: 5,
+      name: 'Rule',
+      number: 400,
+      icon: (
+        <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
+      ),
+      link: '/admin/rule',
+    },
   ];
 
   return (
-    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
-      {allTab.map((tab) => (
-        <MenuTab key={tab.id} onClick={() => handleClick(tab.link)} tab={tab} />
+    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto bg-red'>
+      {allTab.map((item) => (
+        <MenuTab
+          key={item.id}
+          onClick={() => handleClick(item.link)}
+          tab={item}
+        />
       ))}
     </div>
   );

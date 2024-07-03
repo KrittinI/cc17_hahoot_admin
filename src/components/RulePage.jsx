@@ -1,8 +1,7 @@
-import AdminMenu from '../layouts/AdminMenu';
 import AdminSideBar from '../layouts/AdminSideBar';
 import AdminTable from '../layouts/AdminTable';
 
-export default function UserProfilePage() {
+export default function RulePage() {
   return (
     <>
       <div className='flex'>

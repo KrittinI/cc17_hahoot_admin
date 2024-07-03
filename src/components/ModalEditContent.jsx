@@ -1,8 +1,13 @@
 import { useRef } from 'react';
 import defaultImage from '../assets/hh-hero.png';
 import { useState } from 'react';
+import QuizItem from './QuizItem';
 
-export default function ModalEditContent({ onCancel, message }) {
+export default function ModalEditContent({
+  setSelectedQuizDetail,
+  onSave,
+  quizDetail,
+}) {
   const fileInputRef = useRef(null);
   const [imageUrl, setImageUrl] = useState(defaultImage);
 
@@ -20,41 +25,36 @@ export default function ModalEditContent({ onCancel, message }) {
 
   return (
     <div className='flex flex-col'>
-      <div className='flex gap-16'>
-        <div className='w-3/5'>
-          <h1>Title</h1>
-          <input
-            placeholder='we are Hahoot'
-            type='text'
-            className='bg-white border border-[#86868b] rounded-xl w-full p-2'
-            // value={message.title}
-          />
-          <br />
-          {/* <br /> */}
-          <h1>Detail</h1>
-          <input
-            placeholder='we are Hahoot'
-            type='text'
-            className='bg-white border border-[#86868b] rounded-xl w-full p-2'
-            // value={message.detail}
-          />
-          <br />
-          <br />
-          <h1>Image</h1>
+      <div className='flex flex-col gap-5 '>
+        <div className='w-full h-full bg-[#F8FAFF] p-4 rounded-2xl flex gap-6'>
           <img
             src={imageUrl}
             onClick={handleImageClick}
-            className='h-[128px] rounded-xl hover:cursor-pointer'
+            className='h-[300px] rounded-xl hover:cursor-pointer'
             alt='Selected'
           />
+
+          <div className='flex flex-col gap-3  w-full'>
+            <input
+              placeholder='TitleContent'
+              type='text'
+              className='bg-white border border-[#86868b] rounded-xl w-full p-2'
+            />
+            <input
+              placeholder='Description'
+              type='text'
+              className='bg-white border border-[#86868b] rounded-xl w-full h-full p-2'
+              // value={message.detail}
+            />
+          </div>
           <input
             type='file'
             ref={fileInputRef}
             style={{ display: 'none' }}
             onChange={handleFileChange}
           />
-          <br />
-          <div className='flex justify-between gap-8'>
+          {/* <br /> */}
+          {/* <div className='flex justify-between gap-8'>
             <div className='w-1/2'>
               <h1>Date</h1>
               <input
@@ -64,49 +64,29 @@ export default function ModalEditContent({ onCancel, message }) {
                 className='bg-white border border-[#86868b] rounded-xl w-full'
               ></input>
             </div>
-          </div>
-          <br />
+          </div> */}
         </div>
-        <div className='w-2/5'>
-          <div>
-            <h1>Card No.1</h1>
-            <select className='bg-white border border-[#86868b] rounded-xl w-full p-1 h-12'>
-              <option>Please select Title</option>
-            </select>
-            <br /> <br />
-          </div>
-          <div>
-            <h1>Card No.1</h1>
-            <select className='bg-white border border-[#86868b] rounded-xl w-full p-1 h-12'>
-              <option>Please select Title</option>
-            </select>
-            <br /> <br />
-          </div>
-          <div>
-            <h1>Card No.1</h1>
-            <select className='bg-white border border-[#86868b] rounded-xl w-full p-1 h-12'>
-              <option>Please select Title</option>
-            </select>
-            <br /> <br />
-          </div>
-          <div>
-            <h1>Card No.1</h1>
-            <select className='bg-white border border-[#86868b] rounded-xl w-full p-1 h-12'>
-              <option>Please select Title</option>
-            </select>
-            <br /> <br />
-          </div>
-
-          <br />
+        <div className='flex flex-col gap-2 font-bold px-4'>
+          <div className='text-3xl'>My Quiz</div>
+          <hr className='border border-gray' />
+        </div>
+        <div className='flex gap-8  px-4 '>
+          <QuizItem
+            setSelectedQuizDetail={setSelectedQuizDetail}
+            quizDetail={quizDetail}
+          />
         </div>
       </div>
-      <hr className='border border-gray' />
+
       <br />
-      <div className='flex gap-4 justify-end'>
-        <button className='bg-red p-2 rounded-lg w-[80px]' onClick={onCancel}>
-          CANCLE
+
+      <div className='flex gap-4 justify-start'>
+        <button
+          className='bg-black p-2 rounded-lg w-[250px] text-white'
+          onClick={onSave}
+        >
+          SAVE
         </button>
-        <button className='bg-green p-2 rounded-lg w-[80px]'>EDIT</button>
       </div>
     </div>
   );

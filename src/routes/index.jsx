@@ -8,6 +8,7 @@ import AdminHomePage from '../pages/AdminHomePage';
 import EventListPage from '../pages/EventListPage';
 import QuizStorePage from '../pages/QuizStorePage';
 import UserProfilePage from '../pages/UserProfilePage';
+import RulePage from '../components/RulePage';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/userProfile',
         element: <UserProfilePage />,
+      },
+      {
+        path: '/admin/rule',
+        element: <RulePage />,
       },
     ],
   },

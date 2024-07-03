@@ -20,16 +20,16 @@ ChartJS.register(
 
 export default function ActivityCard() {
   const data = {
-    labels: ['User', 'Event list', 'Quiz store', '???'],
+    labels: ['Users', 'Events', 'Questions', 'Rooms'],
     datasets: [
       {
-        // label: 'Total Activity',
-        data: [450, 300, 200, 400],
+        label: 'Users',
+        data: [450, 350, 400, 200],
         backgroundColor: [
-          'rgba(54, 162, 235, 1)', // Blue
-          'rgba(255, 206, 86, 1)', // Yellow
-          'rgba(255, 99, 132, 1)', // Red
-          'rgba(75, 192, 192, 1)', // Green
+          '#60A5FA', // Blue
+          '#FFDA45', // Yellow
+          '#FB7185', // Red
+          '#4ADE80', // Green
         ],
         borderRadius: 20,
         barThickness: 40,
@@ -38,6 +38,9 @@ export default function ActivityCard() {
   };
 
   const options = {
+    plugins: {
+      legend: false,
+    },
     scales: {
       y: {
         beginAtZero: true,
@@ -51,13 +54,5 @@ export default function ActivityCard() {
     },
   };
 
-  return (
-    <div>
-      <Bar
-        data={data}
-        options={options}
-        className='bg-white p-8 rounded-3xl h-full'
-      />
-    </div>
-  );
+  return <Bar data={data} options={options} />;
 }

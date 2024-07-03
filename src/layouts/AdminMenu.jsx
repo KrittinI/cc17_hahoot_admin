@@ -52,28 +52,20 @@ export default function AdminMenu() {
       ),
       link: '/admin/quizStore',
     },
+
     {
       id: 5,
       name: 'Rooms',
       number: 400,
       icon: (
-        <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
-      ),
-      link: '/admin/quizStore',
-    },
-    {
-      id: 5,
-      name: 'Rule',
-      number: 400,
-      icon: (
         <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
       ),
-      link: '/admin/rule',
+      link: '/admin/room',
     },
   ];
 
   return (
-    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto bg-red'>
+    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
       {allTab.map((item) => (
         <MenuTab
           key={item.id}

@@ -1,5 +1,6 @@
+import DoughnutChart from '../components/DoughnutChart';
 import Table from '../components/Table';
-import AdminSideBar from '../layouts/AdminSideBar';
+import AdminSideBar from '../features/admin/components/AdminSideBar';
 import SplitScreen from '../layouts/SplitScreen';
 
 export default function UserProfilePage() {
@@ -85,9 +86,15 @@ export default function UserProfilePage() {
   return (
     <>
       <div className='flex w-[65%] mx-auto'>
-        <SplitScreen>
+        <SplitScreen >
           <Table title={`Users`} header={userTable} data={dataUserTable} />
-          <AdminSideBar />
+          <div className='flex flex-col gap-2'>
+            <div className='bg-white rounded-xl col-span-1 flex flex-col gap-2 p-4 justify-between'>
+              <h1 className='text-[#343C6A] w-full text-base'> Users Statistics</h1>
+              <DoughnutChart />
+            </div>
+            <AdminSideBar />
+          </div>
         </SplitScreen>
       </div>
     </>

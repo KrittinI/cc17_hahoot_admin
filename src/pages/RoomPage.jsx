@@ -1,13 +1,15 @@
-import AdminSideBar from '../layouts/AdminSideBar';
-import Table from './Table';
-const userTable = [
+import AdminSideBar from '../features/admin/components/AdminSideBar';
+import Table from '../components/Table';
+import SplitScreen from '../layouts/SplitScreen';
+import DoughnutChart from '../components/DoughnutChart';
+const roomsTable = [
   { title: 'Username', colSpan: 2, name: 'username' },
   { title: 'E-Mail', colSpan: 2, name: 'email' },
   { title: 'Event list', colSpan: 2, name: 'events' },
   { title: 'Quiz list', colSpan: 2, name: 'questions' },
   { title: 'Status', colSpan: 2, name: 'isActive' },
 ];
-const dataUserTable = [
+const dataRoomTable = [
   {
     detail1: 'Spotify Subscription1',
     detail2: 'ssSpotify@gmail.com',
@@ -83,13 +85,17 @@ const dataUserTable = [
 export default function RoomPage() {
   return (
     <>
-      <div className='flex'>
-        <div className='px-5 py-8 border border-yellow w-2/3'>
-          <Table title={`Users`} header={userTable} data={dataUserTable} />
-        </div>
-        <div className='border border-yellow px-3 py-8 mt-[48px] w-1/3'>
-          <AdminSideBar />
-        </div>
+      <div className='flex w-[65%] mx-auto'>
+        <SplitScreen>
+          <Table title={`Rooms`} header={roomsTable} data={dataRoomTable} />
+          <div className='flex flex-col gap-2'>
+            <div className='bg-white rounded-xl col-span-1 flex flex-col gap-2 p-4 justify-between'>
+              <h1 className='text-[#343C6A] w-full text-base'> Rooms Statistics</h1>
+              <DoughnutChart />
+            </div>
+            <AdminSideBar />
+          </div>
+        </SplitScreen>
       </div>
     </>
   );

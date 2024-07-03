@@ -18,7 +18,7 @@ ChartJS.register(
   Legend
 );
 
-export default function ActivityCard() {
+export default function BarChart() {
   const data = {
     labels: ['Users', 'Events', 'Questions', 'Rooms'],
     datasets: [

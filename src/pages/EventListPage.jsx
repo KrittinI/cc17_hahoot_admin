@@ -1,5 +1,6 @@
+import DoughnutChart from '../components/DoughnutChart';
 import Table from '../components/Table';
-import AdminSideBar from '../layouts/AdminSideBar';
+import AdminSideBar from '../features/admin/components/AdminSideBar';
 import SplitScreen from '../layouts/SplitScreen';
 
 export default function EventListPage() {
@@ -75,7 +76,13 @@ export default function EventListPage() {
     <div className='flex w-[65%] mx-auto'>
       <SplitScreen>
         <Table title={`Events`} header={eventTable} data={dataEventTable} />
-        <AdminSideBar />
+        <div className='flex flex-col gap-2'>
+          <div className='bg-white rounded-xl col-span-1 flex flex-col gap-2 p-4 justify-between'>
+            <h1 className='text-[#343C6A] w-full text-base'> Events Statistics</h1>
+            <DoughnutChart />
+          </div>
+          <AdminSideBar />
+        </div>
       </SplitScreen>
     </div>
   );

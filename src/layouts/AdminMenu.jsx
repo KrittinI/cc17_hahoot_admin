@@ -4,6 +4,7 @@ import { IoPerson } from 'react-icons/io5';
 import { PiBagFill } from 'react-icons/pi';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
 import Logo from '../assets/icon-hh.png';
+import { FaDiceD6 } from 'react-icons/fa';
 
 export default function AdminMenu() {
   const navigate = useNavigate();
@@ -51,21 +52,26 @@ export default function AdminMenu() {
       ),
       link: '/admin/quizStore',
     },
+
     {
       id: 5,
       name: 'Rooms',
       number: 400,
       icon: (
-        <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
+        <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
       ),
-      link: '/admin/quizStore',
+      link: '/admin/room',
     },
   ];
 
   return (
     <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
-      {allTab.map((tab) => (
-        <MenuTab key={tab.id} onClick={() => handleClick(tab.link)} tab={tab} />
+      {allTab.map((item) => (
+        <MenuTab
+          key={item.id}
+          onClick={() => handleClick(item.link)}
+          tab={item}
+        />
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import QuizItem from './QuizItem';
 
-export default function ModalEditContent({
+export default function ModalCreateContent({
   handleSave,
   dataContent,
   setSelectContent,

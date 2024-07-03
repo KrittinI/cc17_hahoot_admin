@@ -18,7 +18,7 @@ export default function AllQuizCard() {
     setOpen(true);
   };
   return (
-    <div className='flex flex-col bg-white rounded-3xl m-8 p-8'>
+    <div className='flex flex-col bg-white rounded-3xl p-4'>
       <div className='flex'>
         <div className=' w-2/3 flex flex-col'>
           <h1 className='text-[#343C6A] text-base'> Edit Home Page content</h1>

@@ -5,15 +5,15 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function StatisticCard() {
   const data = {
-    labels: ['User Profile', 'Quiz Store', '???', 'Event list'],
+    labels: ['Users', 'Events', 'Questions', 'Rooms'],
     datasets: [
       {
-        data: [50, 50, 50, 50],
+        data: [450, 350, 400, 200],
         backgroundColor: [
-          'rgba(54, 162, 235, 1)', // Blue
-          'rgba(255, 99, 132, 1)', // Red
-          'rgba(75, 192, 192, 1)', // Green
-          'rgba(255, 206, 86, 1)', // Yellow
+          '#60A5FA', // Blue
+          '#FFDA45', // Yellow
+          '#FB7185', // Red
+          '#4ADE80', // Green
         ],
 
         borderWidth: 1,
@@ -25,7 +25,7 @@ function StatisticCard() {
   const options = {
     plugins: {
       legend: {
-        position: 'bottom',
+        position: 'bottom', // Position of Data Chart
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
@@ -41,9 +41,9 @@ function StatisticCard() {
   };
 
   return (
-    <div className='bg-white p-8 rounded-3xl h-full'>
+    <>
       <Doughnut data={data} options={options} />
-    </div>
+    </>
   );
 }
 

@@ -1,16 +1,83 @@
+import Table from '../components/Table';
 import AdminSideBar from '../layouts/AdminSideBar';
-import AdminTable from '../layouts/AdminTable';
+import SplitScreen from '../layouts/SplitScreen';
 
 export default function QuizStorePage() {
+  const quizTable = [
+    { title: 'Title', colSpan: 6 },
+    { title: 'Topic', colSpan: 4 },
+  ];
+
+  const dataQuizTable = [
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+    {
+      detail1: 'Spotify Subscription',
+      detail2: 'ssSpotify@gmail.com',
+      detail3: '100',
+      detail4: '500',
+    },
+  ];
+
   return (
     <div>
-      <div className='flex'>
-        <div className='px-20 py-8 border border-yellow w-2/3'>
-          <AdminTable />
-        </div>
-        <div className='border border-yellow px-3 py-8 mt-[48px] w-1/3'>
+      <div className='flex w-[65%] mx-auto'>
+        <SplitScreen>
+          <Table title={`Quesitons`} header={quizTable} data={dataQuizTable} />
           <AdminSideBar />
-        </div>
+        </SplitScreen>
       </div>
     </div>
   );

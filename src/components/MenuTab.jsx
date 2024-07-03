@@ -10,6 +10,6 @@ export default function MenuTab({ tab, onClick }) {
           <div className=' text-[#232323] text-xl'>{tab?.number}</div>
         </div>
       </div>
-    </Button>
+    </Button >
   );
 }

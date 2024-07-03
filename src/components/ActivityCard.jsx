@@ -21,18 +21,11 @@ ChartJS.register(
 export default function ActivityCard() {
   const data = {
     labels: ['Users', 'Events', 'Questions', 'Rooms'],
-    labels: ['Users', 'Events', 'Questions', 'Rooms'],
     datasets: [
       {
         label: 'Users',
         data: [450, 350, 400, 200],
-        label: 'Users',
-        data: [450, 350, 400, 200],
         backgroundColor: [
-          '#60A5FA', // Blue
-          '#FFDA45', // Yellow
-          '#FB7185', // Red
-          '#4ADE80', // Green
           '#60A5FA', // Blue
           '#FFDA45', // Yellow
           '#FB7185', // Red

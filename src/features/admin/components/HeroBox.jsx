@@ -37,6 +37,18 @@ const dataContent = {
     profileImage: imageProfile,
     name: 'Mathematis4',
   },
+  quiz5: {
+    image: imageQuiz,
+    topic: 'This is Detail E',
+    profileImage: imageProfile,
+    name: 'Mathematis5',
+  },
+  quiz6: {
+    image: imageQuiz,
+    topic: 'This is Detail F',
+    profileImage: imageProfile,
+    name: 'Mathematis6',
+  },
 };
 
 export default function HeroBox() {
@@ -81,17 +93,14 @@ export default function HeroBox() {
               onCancel={() => setIsCreate(false)}
               setHeroContent={setHeroContent}
               handleSave={handleSave}
-              dataContent={heroContent}
+              heroContent={heroContent}
             />
           </Modal>
+          {/* =============================================================================================== */}
           <Button bg={`black`} width={40} onClick={handleEdit}>
             Edit
           </Button>
-          <Modal
-            open={isEdit}
-            onClose={() => setIsEdit(false)}
-            title={'EDIT'}
-          >
+          <Modal open={isEdit} onClose={() => setIsEdit(false)} title={'EDIT'}>
             <EditHeroForm
               onCancel={() => setIsEdit(false)}
               setHeroContent={setHeroContent}

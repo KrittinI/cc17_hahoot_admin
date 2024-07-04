@@ -2,7 +2,7 @@ export default function ContentCard({ dataContent }) {
   return (
     <>
       <h1 className='text-[#343C6A] text-[22px]'>Edit Home Page content</h1>
-      <div className=' bg-blue p-8 rounded-tl-3xl flex flex-col gap-16'>
+      <div className=' bg-red p-8 rounded-tl-3xl flex flex-col gap-16'>
         <div className='flex flex-col gap-8'>
           <div className='flex gap-8 '>
             <img

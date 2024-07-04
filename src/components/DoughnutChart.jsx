@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function StatisticCard() {
+function DoughnutChart() {
   const data = {
     labels: ['Users', 'Events', 'Questions', 'Rooms'],
     datasets: [
@@ -47,4 +47,4 @@ function StatisticCard() {
   );
 }
 
-export default StatisticCard;
+export default DoughnutChart;

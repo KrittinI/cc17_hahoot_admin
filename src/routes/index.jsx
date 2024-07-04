@@ -8,7 +8,7 @@ import AdminHomePage from '../pages/AdminHomePage';
 import EventListPage from '../pages/EventListPage';
 import QuizStorePage from '../pages/QuizStorePage';
 import UserProfilePage from '../pages/UserProfilePage';
-import RoomPage from '../components/RoomPage';
+import RoomPage from '../pages/RoomPage';
 
 const router = createBrowserRouter([
   {

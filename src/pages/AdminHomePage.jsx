@@ -1,4 +1,4 @@
-import AdminFeed from "../layouts/AdminFeed";
+import AdminFeed from "../features/admin/components/AdminFeed";
 
 export default function AdminHomePage() {
   return (

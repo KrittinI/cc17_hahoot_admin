@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import MenuTab from '../components/MenuTab';
+import MenuTab from '../../../components/MenuTab';
 import { IoPerson } from 'react-icons/io5';
 import { PiBagFill } from 'react-icons/pi';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
-import Logo from '../assets/icon-hh.png';
+import Logo from '../../../assets/icon-hh.png';
 import { FaDiceD6 } from 'react-icons/fa';
 
 export default function AdminMenu() {
@@ -58,14 +58,14 @@ export default function AdminMenu() {
       name: 'Rooms',
       number: 400,
       icon: (
-        <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[70px] h-[70px] flex justify-center align-middle' />
+        <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin/room',
     },
   ];
 
   return (
-    <div className='flex gap-8 justify-between items-center py-8 w-[65%] mx-auto'>
+    <div className='flex gap-8 justify-between items-center pt-4 w-[65%] mx-auto'>
       {allTab.map((item) => (
         <MenuTab
           key={item.id}

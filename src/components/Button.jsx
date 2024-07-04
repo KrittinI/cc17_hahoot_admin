@@ -1,7 +1,7 @@
 const bgMap = {
   blue: "border border-blue-500 bg-blue-500 hover:bg-blue-600",
   sky: "border border-blue-400 bg-blue-400 hover:bg-blue-500",
-  green: "border border-green-500 bg-green-500 hover:bg-green-600",
+  green: "border border-green bg-green hover:bg-darkgreen",
   gray: "border border-gray-200 bg-gray-200 hover:bg-gray-300",
   none: "border border-black hover:bg-gray-300 hover:border-gray-300",
   red: "border border-red-500 bg-red-500 hover:bg-red-600",

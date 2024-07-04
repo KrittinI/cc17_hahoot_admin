@@ -1,5 +1,5 @@
-import SideBarTab from '../components/SideBarTab';
-import { HomeIcon, TransactionsIcon } from '../icons/Admin';
+import SideBarTab from '../../../components/SideBarTab';
+import { HomeIcon, TransactionsIcon } from '../../../icons/Admin';
 import { IoPerson } from 'react-icons/io5';
 import { BsGraphUpArrow, BsCreditCard } from 'react-icons/bs';
 import { GiReceiveMoney } from 'react-icons/gi';
@@ -50,7 +50,7 @@ export default function AdminSideBar() {
   ];
 
   return (
-    <div className='bg-white p-4 flex flex-col gap-4 w-[255px] rounded-[25px]'>
+    <div className='bg-white p-4 flex flex-col gap-4 w-full rounded-xl'>
       {sideMenu.map((tab) => (
         <div key={tab.id}>
           <SideBarTab icon={tab.icon} tabName={tab.name} />

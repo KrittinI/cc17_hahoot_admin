@@ -60,14 +60,11 @@ export default function HeroBox() {
           <ContentCard dataContent={heroContent} />
         </div>
         <div className='flex flex-col col-span-1'>
-          <QuizCard
-            saveQuizDetail={[
-              heroContent.quiz1,
-              heroContent.quiz2,
-              heroContent.quiz3,
-              heroContent.quiz4,
-            ]}
-          />
+          <h1 className='text-[#343C6A] text-[22px]'>Free Quiz Card</h1>
+          <QuizCard saveQuizDetail={heroContent.quiz1} />
+          <QuizCard saveQuizDetail={heroContent.quiz2} />
+          <QuizCard saveQuizDetail={heroContent.quiz3} />
+          <QuizCard saveQuizDetail={heroContent.quiz4} />
         </div>
       </div>
       <div className='flex justify-end'>

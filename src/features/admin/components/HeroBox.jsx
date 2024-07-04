@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ButtonAdmin from './ButtonAdmin';
 import ContentCard from './ContentCard';
 import Modal from '../../../components/Modal';
 import QuizCard from './QuizCard';
@@ -8,6 +7,7 @@ import imageQuiz from '../../../assets/editIcon.png';
 import imageProfile from '../../../assets/user.png';
 import defaultImage from '../../../assets/hh-hero.png';
 import CreateHeroForm from './CreateHeroForm';
+import Button from '../../../components/Button';
 
 const dataContent = {
   image: defaultImage,
@@ -72,14 +72,13 @@ export default function HeroBox() {
       </div>
       <div className='flex justify-end'>
         <div className='flex justify-start gap-4 w-full bg-white p-8 rounded-b-3xl'>
-          <ButtonAdmin width='w-[130px]' onClick={() => setIsCreate(true)}>
+          <Button bg={`black`} width={40} onClick={() => setIsCreate(true)}>
             Create
-          </ButtonAdmin>
+          </Button>
           <Modal
             open={isCreate}
             onClose={() => setIsCreate(false)}
-            title={'CREATE'}
-            width={50}
+            title={'Create New Hero Content'}
           >
             <CreateHeroForm
               onCancel={() => setIsCreate(false)}
@@ -88,14 +87,13 @@ export default function HeroBox() {
               dataContent={heroContent}
             />
           </Modal>
-          <ButtonAdmin width='w-[130px]' onClick={handleEdit}>
+          <Button bg={`black`} width={40} onClick={handleEdit}>
             Edit
-          </ButtonAdmin>
+          </Button>
           <Modal
             open={isEdit}
             onClose={() => setIsEdit(false)}
             title={'EDIT'}
-            width={50}
           >
             <EditHeroForm
               onCancel={() => setIsEdit(false)}

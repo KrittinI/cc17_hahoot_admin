@@ -1,60 +1,70 @@
 import { useRef, useState } from 'react';
 import QuizItem from '../../../components/QuizItem';
+import Button from '../../../components/Button';
+import Input from '../../../components/Input';
+import TextArea from '../../../components/TextArea';
+
+const initialInput = {
+  title: '',
+  description: '',
+  quiz1: 0,
+  quiz2: 0,
+  quiz3: 0,
+  quiz4: 0,
+}
 
 export default function CreateHeroForm({
   handleSave,
-  dataContent,
-  setSelectContent,
+  onCancel,
 }) {
   const fileInputRef = useRef(null);
-  const [imageUrl, setImageUrl] = useState(dataContent.image);
-  const [title, setTitle] = useState(dataContent.title);
-  const [description, setDescription] = useState(dataContent.detail);
-  const [quizDetail, setQuizDetail] = useState([
-    dataContent.quiz1,
-    dataContent.quiz2,
-    dataContent.quiz3,
-    dataContent.quiz4,
-  ]);
+  const [file, setFile] = useState(null);
+  const [input, setInput] = useState(initialInput);
 
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
 
+  const handleChangeInput = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value })
+  }
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImageUrl(imageUrl);
-      setSelectContent((prev) => ({ ...prev, image: imageUrl }));
+      setFile(file);
     }
   };
 
   return (
-    <div className='flex flex-col'>
-      <div className='flex flex-col gap-5 '>
-        <div className='w-full h-full bg-[#F8FAFF] p-4 rounded-2xl flex gap-6'>
-          <img
-            src={imageUrl}
+    <div className=''>
+      <div className=''>
+        <div className='w-[832px] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl grid grid-cols-5 '>
+          <div
+            role='button'
+            className='col-span-2 h-full bg-red flex justify-center items-center rounded-xl'
             onClick={handleImageClick}
-            className='h-[300px] rounded-xl hover:cursor-pointer'
-            alt='Selected'
-          />
-
-          <div className='flex flex-col gap-3  w-full'>
-            <input
-              placeholder='Title'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type='text'
-              className='bg-white border border-[#86868b] rounded-xl w-full p-2'
+          >
+            {file ? <img
+              src={URL.createObjectURL(file)}
+              className=''
+              alt='Selected'
             />
-            <input
+              : <h1>Add image</h1>
+            }
+          </div>
+          <div className='flex flex-col justify-between gap-3 col-span-3'>
+            <Input
+              name="title"
+              placeholder='Title'
+              value={input?.title}
+              onChange={handleChangeInput}
+            />
+            <TextArea
+              name="description"
               placeholder='Description'
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              type='text'
-              className='bg-white border border-[#86868b] rounded-xl w-full h-full p-2'
+              value={input?.description}
+              onChange={handleChangeInput}
             />
           </div>
           <input
@@ -70,7 +80,7 @@ export default function CreateHeroForm({
           <hr className='border border-gray' />
         </div>
         <div>
-          <QuizItem
+          {/* <QuizItem
             quizDetail={quizDetail}
             setQuizDetail={setQuizDetail}
             dropdownOption={[
@@ -79,20 +89,26 @@ export default function CreateHeroForm({
               dataContent.quiz3,
               dataContent.quiz4,
             ]}
-          />
+          /> */}
         </div>
-      </div>
-
-      <br />
-
-      <div className='flex gap-4 justify-start'>
-        <button
-          className='bg-black p-2 rounded-lg w-[250px] text-white'
+      </div >
+      <div className='flex gap-4 justify-around '>
+        <Button
+          bg={`green`}
+          color={`white`}
+          width={60}
           onClick={handleSave}
         >
           SAVE
-        </button>
+        </Button>
+        <Button
+          bg={`black`}
+          width={60}
+          onClick={onCancel}
+        >
+          Cancel
+        </Button>
       </div>
-    </div>
+    </div >
   );
 }

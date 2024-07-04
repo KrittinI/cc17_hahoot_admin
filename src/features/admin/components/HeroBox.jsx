@@ -40,22 +40,23 @@ const dataContent = {
 };
 
 export default function HeroBox() {
-  const [open, setOpen] = useState(false);
+  const [isCreate, setIsCreate] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [heroContent, setHeroContent] = useState(dataContent);
 
   const handleEdit = () => {
-    setOpen(true);
+    setIsEdit(true);
   };
 
   const handleSave = () => {
     setHeroContent(heroContent);
-    setOpen(false);
+    setIsEdit(false);
   };
 
   return (
     <div className='flex flex-col bg-white rounded-xl p-4'>
       <div className='grid grid-cols-3'>
-        <div className='  flex flex-col  col-span-2'>
+        <div className=' flex flex-col  col-span-2'>
           <ContentCard dataContent={heroContent} />
         </div>
         <div className='flex flex-col col-span-1'>
@@ -71,17 +72,17 @@ export default function HeroBox() {
       </div>
       <div className='flex justify-end'>
         <div className='flex justify-start gap-4 w-full bg-white p-8 rounded-b-3xl'>
-          <ButtonAdmin width='w-[130px]' onClick={handleEdit}>
+          <ButtonAdmin width='w-[130px]' onClick={() => setIsCreate(true)}>
             Create
           </ButtonAdmin>
           <Modal
-            open={open}
-            onClose={() => setOpen(false)}
+            open={isCreate}
+            onClose={() => setIsCreate(false)}
             title={'CREATE'}
             width={50}
           >
             <CreateHeroForm
-              onCancel={() => setOpen(false)}
+              onCancel={() => setIsCreate(false)}
               setHeroContent={setHeroContent}
               handleSave={handleSave}
               dataContent={heroContent}
@@ -91,13 +92,13 @@ export default function HeroBox() {
             Edit
           </ButtonAdmin>
           <Modal
-            open={open}
-            onClose={() => setOpen(false)}
+            open={isEdit}
+            onClose={() => setIsEdit(false)}
             title={'EDIT'}
             width={50}
           >
             <EditHeroForm
-              onCancel={() => setOpen(false)}
+              onCancel={() => setIsEdit(false)}
               setHeroContent={setHeroContent}
               handleSave={handleSave}
               dataContent={heroContent}

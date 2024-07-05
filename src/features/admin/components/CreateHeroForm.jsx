@@ -28,6 +28,13 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+  const quizContent = [
+    heroContent.quiz,
+    heroContent.quiz,
+    heroContent.quiz,
+    heroContent.quiz,
+  ];
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -78,9 +85,6 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
         <div className='bg-[#F8FAFF] p-4 rounded-2xl flex flex-col gap-2'>
           <div className='text-2xl'>My Quiz</div>
           <div className='flex flex-col gap-4'>
-            <QuizCreate heroContent={heroContent} />
-            <QuizCreate heroContent={heroContent} />
-            <QuizCreate heroContent={heroContent} />
             <QuizCreate heroContent={heroContent} />
           </div>
         </div>

@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Modal from './Modal';
-import ModalTable from './ModalTable';
+import { useState } from "react";
+import Modal from "./Modal";
+import ModalTable from "./ModalTable";
+import { LockIcon, UnlockIcon } from "../icons/Banned";
 
 export default function RowTable({
   item,
@@ -27,38 +28,31 @@ export default function RowTable({
   };
 
   return (
-    <div className='grid grid-cols-10 gap-4 text-center py-6 border-b items-center'>
-      <div className='col-span-2'>{item.detail1}</div>
-      <div className='col-span-2'>{item.detail2}</div>
-      <div className='col-span-2'>{item.detail3}</div>
-      <div className='col-span-2'>{item.detail4}</div>
-      <div className='col-span-1'>{item.detail5}</div>
-      <div className='flex justify-center items-center gap-8'>
-        <button
-          className={`text-white p-3 rounded-xl min-w-24  ${
-            item.detail5 === 'Active'
-              ? 'bg-darkred hover:bg-pink-500'
-              : 'bg-green hover:bg-lime-200'
-          }`}
-          onClick={handleBanClick}
-        >
-          {item.detail5 === 'Active' ? 'Banned' : 'Unbanned'}
-        </button>
+    <div className="grid grid-cols-7 gap-4 text-center py-2 border-b">
+      <div className="col-span-1 text-font-body">{item.detail1}</div>
+      <div className="col-span-1 text-font-body">{item.detail2}</div>
+      <div className="col-span-2 text-font-body">{item.detail3}</div>
+      <div className="col-span-1 text-font-body">{item.detail4}</div>
+      <div className="col-span-1 text-font-body">{item.detail5}</div>
+      <div role="button" className="col-span-1 text-font-body">
+        <div className="flex justify-center items-center text-center ">{item.detail6 === "Active" ? <LockIcon /> : <UnlockIcon />}</div>
+      </div>
+      <div className="grid gap-4">
         <Modal
           open={open}
           onClose={() => setOpen(false)}
           title={
-            item.detail5 === 'Active'
+            item.detail5 === "Active"
               ? `Are you want to Banning this user`
               : `Are you want to Unbanning this user`
           }
         >
           <ModalTable
             onConfirm={
-              item.detail5 === 'Active' ? handleConfirmBan : handleConfirmUnBan
+              item.detail5 === "Active" ? handleConfirmBan : handleConfirmUnBan
             }
             onCancel={() => setOpen(false)}
-            isActive={item.detail5 === 'Active'}
+            isActive={item.detail5 === "Active"}
           />
         </Modal>
       </div>

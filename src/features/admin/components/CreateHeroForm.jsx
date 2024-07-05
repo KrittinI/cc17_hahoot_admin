@@ -45,6 +45,7 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-6'>
+        {/* LEFT BLOCK */}
         <div className='w-[832px] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl grid grid-cols-5 '>
           <div
             role='button'
@@ -82,9 +83,10 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
             onChange={handleFileChange}
           />
         </div>
+        {/* RIGHT BLOCK */}
         <div className='bg-[#F8FAFF] p-4 rounded-2xl flex flex-col gap-2'>
           <div className='text-2xl'>My Quiz</div>
-          <div className='flex flex-col gap-4'>
+          <div>
             <QuizCreate heroContent={heroContent} />
           </div>
         </div>

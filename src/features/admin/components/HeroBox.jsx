@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import ContentCard from './ContentCard';
-import Modal from '../../../components/Modal';
-import QuizCard from './QuizCard';
-import EditHeroForm from './EditHeroForm';
-import imageQuiz from '../../../assets/editIcon.png';
-import imageProfile from '../../../assets/user.png';
-// import defaultImage from '../../../assets/hh-hero.png';
-import CreateHeroForm from './CreateHeroForm';
-import Button from '../../../components/Button';
+import { useState } from "react";
+import ContentCard from "./ContentCard";
+import Modal from "../../../components/Modal";
+import QuizCard from "./QuizCard";
+import EditHeroForm from "./EditHeroForm";
+import imageQuiz from "../../../assets/editIcon.png";
+import imageProfile from "../../../assets/user.png";
+import defaultImage from "../../../assets/hh-hero.png";
+import CreateHeroForm from "./CreateHeroForm";
+import Button from "../../../components/Button";
 
 // const dataContent = {
 //   image: defaultImage,
@@ -60,27 +60,27 @@ const oneHero = {
   icon: null,
   quiz1: {
     image: imageQuiz,
-    topic: 'This is Detail A',
+    topic: "This is Detail A",
     profileImage: imageProfile,
-    name: 'Mathematis1',
+    name: "Mathematis1",
   },
   quiz2: {
     image: imageQuiz,
-    topic: 'This is Detail B',
+    topic: "This is Detail B",
     profileImage: imageProfile,
-    name: 'Mathematis2',
+    name: "Mathematis2",
   },
   quiz3: {
     image: imageQuiz,
-    topic: 'This is Detail C',
+    topic: "This is Detail C",
     profileImage: imageProfile,
-    name: 'Mathematis3',
+    name: "Mathematis3",
   },
   quiz4: {
     image: imageQuiz,
-    topic: 'This is Detail D',
+    topic: "This is Detail D",
     profileImage: imageProfile,
-    name: 'Mathematis4',
+    name: "Mathematis4",
   },
   createdAt: '2024-07-05T01:50:50.996Z',
   updatedAt: '2024-07-05T07:14:31.728Z',
@@ -298,31 +298,27 @@ export default function HeroBox() {
   };
 
   return (
-    <div className='flex flex-col bg-white rounded-xl p-4'>
-      <div className='grid grid-cols-3'>
-        <div className=' flex flex-col  col-span-2'>
+    <div className="flex flex-col bg-white rounded-xl p-4">
+      <div className="grid grid-cols-3 gap-10">
+        <div className=" flex flex-col col-span-2 gap-y-4">
           <ContentCard dataContent={heroContent} />
         </div>
-        <div className='flex flex-col col-span-1'>
-          <h1 className='text-[#343C6A] text-[22px]'>Free Quiz Card</h1>
+        <div className="flex flex-col col-span-1 gap-y-4">
           <QuizCard saveQuizDetail={oneHero.quiz1} />
           <QuizCard saveQuizDetail={oneHero.quiz2} />
           <QuizCard saveQuizDetail={oneHero.quiz3} />
           <QuizCard saveQuizDetail={oneHero.quiz4} />
         </div>
       </div>
-
-      {/* =============== MODAL =============== */}
-
-      <div className='flex justify-end'>
-        <div className='flex justify-start gap-4 w-full bg-white p-8 rounded-b-3xl'>
-          <Button bg={`black`} width={40} onClick={() => setIsCreate(true)}>
-            Create
+      <div className="flex justify-end pt-6">
+        <div className="flex justify-start gap-12 w-full">
+          <Button bg={`blue`} width={60} onClick={() => setIsCreate(true)}>
+            Create New Content
           </Button>
           <Modal
             open={isCreate}
             onClose={() => setIsCreate(false)}
-            title={'Create New Hero Content'}
+            title={"Create New Hero Content"}
           >
             <CreateHeroForm
               onCancel={() => setIsCreate(false)}
@@ -331,11 +327,10 @@ export default function HeroBox() {
               heroContent={heroContent}
             />
           </Modal>
-          {/* =============================================================================================== */}
-          <Button bg={`black`} width={40} onClick={handleEdit}>
+          <Button bg={`black`} width={60} onClick={handleEdit}>
             Edit
           </Button>
-          <Modal open={isEdit} onClose={() => setIsEdit(false)} title={'EDIT'}>
+          <Modal open={isEdit} onClose={() => setIsEdit(false)} title={"EDIT"}>
             <EditHeroForm
               onCancel={() => setIsEdit(false)}
               handleSave={handleSave}

@@ -18,7 +18,7 @@ export default function AdminMenu() {
       name: 'Overview',
       number: 100,
       icon: (
-        <IoPerson className='bg-[#E7EDFF] text-[#396AFF] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
+        <IoPerson className='bg-[#E7EDFF] text-[#718EBF] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin',
     },
@@ -58,7 +58,7 @@ export default function AdminMenu() {
       name: 'Rooms',
       number: 400,
       icon: (
-        <FaDiceD6 className='bg-gray-400 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
+        <FaDiceD6 className='bg-gray-300 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
       link: '/admin/room',
     },

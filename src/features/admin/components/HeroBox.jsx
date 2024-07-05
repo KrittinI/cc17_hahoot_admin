@@ -13,7 +13,7 @@ const dataContent = {
   image: defaultImage,
   title: "This is Title message",
   detail:
-    "This is Detail message This is Detail message This is Detail message This is Detail message.",
+    "This is Detail message This is Detail message This is Detail message This is Detail message.This is Detail message This is Detail message.This is Detail message This is Detail message.",
   quiz1: {
     image: imageQuiz,
     topic: "This is Detail A",
@@ -57,10 +57,10 @@ export default function HeroBox() {
   return (
     <div className="flex flex-col bg-white rounded-xl p-4">
       <div className="grid grid-cols-3 gap-10">
-        <div className=" flex flex-col col-span-2">
+        <div className=" flex flex-col col-span-2 gap-y-4">
           <ContentCard dataContent={heroContent} />
         </div>
-        <div className="flex flex-col col-span-1">
+        <div className="flex flex-col col-span-1 gap-y-4">
           <h1 className="text-font-title">Free Quiz Card</h1>
           <QuizCard saveQuizDetail={heroContent.quiz1} />
           <QuizCard saveQuizDetail={heroContent.quiz2} />
@@ -68,8 +68,8 @@ export default function HeroBox() {
           <QuizCard saveQuizDetail={heroContent.quiz4} />
         </div>
       </div>
-      <div className="flex justify-end">
-        <div className="flex justify-center gap-12 w-full">
+      <div className="flex justify-end pt-6">
+        <div className="flex justify-start gap-12 w-full">
           <Button bg={`blue`} width={60} onClick={() => setIsCreate(true)}>
             Create New Content
           </Button>

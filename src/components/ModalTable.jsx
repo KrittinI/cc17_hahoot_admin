@@ -1,14 +1,14 @@
 export default function ModalTable({ onCancel, onConfirm, isActive }) {
   return (
-    <div className='flex justify-around m-5'>
+    <div className="flex">
       <button
-        className='bg-green p-2 rounded-xl hover:bg-lime-300'
+        className="bg-green p-2 rounded-xl hover:bg-darkgreen"
         onClick={onConfirm}
       >
         {isActive ? `Yes, Ban it.` : `Yes, Unban it.`}
       </button>
       <button
-        className='bg-red p-2 rounded-xl hover:bg-pink-300'
+        className="bg-red p-2 rounded-xl hover:bg-darkred"
         onClick={onCancel}
       >
         {isActive ? `I give last Hope.` : `No,He deserve it`}

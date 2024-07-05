@@ -1,23 +1,27 @@
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function DoughnutChart() {
+function DoughnutChart({ amount, lables }) {
   const data = {
-    labels: ['Users', 'Events', 'Questions', 'Rooms'],
+    labels: lables,
     datasets: [
       {
-        data: [450, 350, 400, 200],
+        data: amount,
         backgroundColor: [
-          '#60A5FA', // Blue
-          '#FFDA45', // Yellow
-          '#FB7185', // Red
-          '#4ADE80', // Green
+          "#4ADE80", // Green
+          "#FB7185", // Red
+          "#FFDA45", // Yellow
+          "#60A5FA", // Blue
+          "#FDA1E9", // Pink
+          "#718EBF", // Grey
+          "#FFA600", // Orange
+          "#8F6C2C", // Brown
         ],
 
         borderWidth: 1,
-        cutout: '60%',
+        cutout: "60%",
       },
     ],
   };
@@ -25,17 +29,17 @@ function DoughnutChart() {
   const options = {
     plugins: {
       legend: {
-        position: 'bottom', // Position of Data Chart
+        position: "bottom", // Position of Data Chart
         labels: {
           usePointStyle: true,
-          pointStyle: 'circle',
-          color: '#4B5563',
+          pointStyle: "circle",
+          color: "#4B5563",
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        titleColor: '#ffffff',
-        bodyColor: '#ffffff',
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        titleColor: "#ffffff",
+        bodyColor: "#ffffff",
       },
     },
   };

@@ -35,10 +35,7 @@ export default function QuizItem({ selectedHero }) {
             />
           </div>
 
-          <div
-            className=' px-2 text-sm bg-green'
-            style={{ whiteSpace: 'normal', overflow: 'visible' }}
-          >
+          <div className=' px-2 text-sm bg-green overflow-visible whitespace-normal'>
             {item?.question}
           </div>
         </div>

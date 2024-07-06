@@ -5,7 +5,6 @@ import QuizCard from './QuizCard';
 import EditHeroForm from './EditHeroForm';
 import imageQuiz from '../../../assets/editIcon.png';
 import imageProfile from '../../../assets/user.png';
-// import defaultImage from '../../../assets/hh-hero.png';
 import CreateHeroForm from './CreateHeroForm';
 import Button from '../../../components/Button';
 

@@ -51,7 +51,7 @@ export default function EditHeroForm({ handleSave, heroContent }) {
             </div>
 
             {/* ========================== DETAIl ========================== */}
-            <div className='bg-white border border-[#86868b] rounded-xl w-full h-full p-4'>
+            <div className='bg-white border border-[#86868b] rounded-xl w-full h-full p-4 overflow-auto'>
               {selectedHero && <div>{selectedHero.detail}</div>}
             </div>
           </div>

@@ -9,7 +9,6 @@ export default function RowTable({
   setSelectedUser,
 }) {
   const [open, setOpen] = useState(false);
-  const [tableRow, setTableRow] = useState([]);
 
   const handleBanClick = () => {
     setSelectedUser(item);

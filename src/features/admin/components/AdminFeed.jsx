@@ -1,6 +1,6 @@
 import BarChart from "../../../components/BarChart";
 import Button from "../../../components/Button";
-// import DoughnutChart from '../../../components/DoughnutChart';
+import logo from "../../../assets/icon-hh.png"
 import HeroBox from "./HeroBox";
 
 export default function AdminFeed() {
@@ -30,35 +30,35 @@ export default function AdminFeed() {
       name: "Coding",
     },
     {
-      id: 6,
+      id: 7,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 8,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 9,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 10,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 11,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 12,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 13,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 14,
       name: "Coding",
     },
   ];
@@ -72,13 +72,12 @@ export default function AdminFeed() {
       <div className="bg-white rounded-xl col-span-1 flex flex-col p-4 gap-5 ">
         <h1 className="text-font-title sticky"> Topic list</h1>
         <hr className="shadow-2xl text-grey" />
-        {/* <DoughnutChart /> */}
         <div className="flex flex-col max-h-[330px] overflow-y-scroll gap-2">
           {topic.map((index) => (
             <Button bg={"white"} key={index.id}>
               <div className="flex items-center">
                 <img
-                  src="../src/assets/icon-hh.png"
+                  src={logo}
                   alt="logo"
                   className="w-8 mr-4"
                 />

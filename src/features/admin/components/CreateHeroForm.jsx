@@ -1,9 +1,7 @@
 import { useRef, useState } from 'react';
-import QuizItem from '../../../components/QuizItem';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import TextArea from '../../../components/TextArea';
-import QuizCard from './QuizCard';
 import QuizCreate from './QuizCreate';
 
 const initialInput = {
@@ -13,9 +11,10 @@ const initialInput = {
   quiz2: 0,
   quiz3: 0,
   quiz4: 0,
+  eventPicture: ''
 };
 
-export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
+export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent }) {
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [input, setInput] = useState(initialInput);
@@ -28,19 +27,19 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const quizContent = [
-    heroContent.quiz,
-    heroContent.quiz,
-    heroContent.quiz,
-    heroContent.quiz,
-  ];
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFile(file);
     }
   };
+
+  const handleClickSave = () => {
+    console.log(input);
+    console.log(URL.createObjectURL(file));
+    setHeroContent({ ...input, eventPicture: URL.createObjectURL(file) })
+    // onSuccess()
+  }
 
   return (
     <div className='flex flex-col gap-4'>
@@ -92,10 +91,10 @@ export default function CreateHeroForm({ handleSave, onCancel, heroContent }) {
         </div>
       </div>
       <div className='flex gap-4 justify-around '>
-        <Button bg={`green`} color={`white`} width={60} onClick={handleSave}>
+        <Button bg={`green`} color={`white`} width={60} onClick={handleClickSave}>
           SAVE
         </Button>
-        <Button bg={`black`} width={60} onClick={onCancel}>
+        <Button bg={`black`} width={60} onClick={onSuccess}>
           Cancel
         </Button>
       </div>

@@ -2,14 +2,14 @@ import { useState } from 'react';
 import QuizItem from '../../../components/QuizItem';
 import Button from '../../../components/Button';
 
-export default function EditHeroForm({ handleSave, heroContent }) {
+export default function EditHeroForm({ handleSave, heroContent, heros, onCancel }) {
   const [selectHero, setSelectHero] = useState('');
   const [quizDetail, setQuizDetail] = useState([]);
   const [selectedHero, setSelectedHero] = useState(null);
 
   const handleChange = (e) => {
     const heroId = e.target.value;
-    const hero = heroContent.find((h) => h.id === parseInt(heroId));
+    const hero = heros.find((h) => h.id === parseInt(heroId));
     setSelectHero(heroId);
     setSelectedHero(hero);
     setQuizDetail([
@@ -42,7 +42,7 @@ export default function EditHeroForm({ handleSave, heroContent }) {
                 value={selectHero}
               >
                 <option value=''>Please select title</option>
-                {heroContent.map((hero) => (
+                {heros.map((hero) => (
                   <option key={hero.id} value={hero.id}>
                     {hero.title}
                   </option>
@@ -67,9 +67,12 @@ export default function EditHeroForm({ handleSave, heroContent }) {
 
       <br />
 
-      <div className='flex gap-4 justify-start'>
+      <div className='flex gap-4 justify-around'>
         <Button bg={`green`} color={`white`} width={60} onClick={handleSave}>
           SAVE
+        </Button>
+        <Button bg={`black`} width={60} onClick={onCancel}>
+          Cancel
         </Button>
       </div>
     </div>

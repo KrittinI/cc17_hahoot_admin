@@ -5,7 +5,6 @@ import QuizCard from "./QuizCard";
 import EditHeroForm from "./EditHeroForm";
 import imageQuiz from "../../../assets/editIcon.png";
 import imageProfile from "../../../assets/user.png";
-import defaultImage from "../../../assets/hh-hero.png";
 import CreateHeroForm from "./CreateHeroForm";
 import Button from "../../../components/Button";
 
@@ -287,7 +286,6 @@ export default function HeroBox() {
   const [isCreate, setIsCreate] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [heroContent, setHeroContent] = useState(oneHero);
-  console.log(heroContent);
   const handleEdit = () => {
     setIsEdit(true);
   };
@@ -299,15 +297,16 @@ export default function HeroBox() {
 
   return (
     <div className="flex flex-col bg-white rounded-xl p-4">
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-3 gap-x-10 gap-y-2">
+        <h1 className="text-font-title col-span-3">Edit Home Page Content</h1>
         <div className=" flex flex-col col-span-2 gap-y-4">
           <ContentCard dataContent={heroContent} />
         </div>
         <div className="flex flex-col col-span-1 gap-y-4">
-          <QuizCard saveQuizDetail={oneHero.quiz1} />
-          <QuizCard saveQuizDetail={oneHero.quiz2} />
-          <QuizCard saveQuizDetail={oneHero.quiz3} />
-          <QuizCard saveQuizDetail={oneHero.quiz4} />
+          <QuizCard saveQuizDetail={heroContent.quiz1} />
+          <QuizCard saveQuizDetail={heroContent.quiz2} />
+          <QuizCard saveQuizDetail={heroContent.quiz3} />
+          <QuizCard saveQuizDetail={heroContent.quiz4} />
         </div>
       </div>
       <div className="flex justify-end pt-6">
@@ -317,7 +316,7 @@ export default function HeroBox() {
           </Button>
           <Modal
             open={isCreate}
-            onClose={() => setIsCreate(false)}
+
             title={"Create New Hero Content"}
           >
             <CreateHeroForm
@@ -330,11 +329,12 @@ export default function HeroBox() {
           <Button bg={`black`} width={60} onClick={handleEdit}>
             Edit
           </Button>
-          <Modal open={isEdit} onClose={() => setIsEdit(false)} title={"EDIT"}>
+          <Modal open={isEdit} title={"EDIT"}>
             <EditHeroForm
               onCancel={() => setIsEdit(false)}
               handleSave={handleSave}
-              heroContent={heros}
+              heroContent={heroContent}
+              heros={heros}
             />
           </Modal>
         </div>

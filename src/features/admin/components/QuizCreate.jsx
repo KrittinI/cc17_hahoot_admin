@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CiCirclePlus } from 'react-icons/ci';
 
-export default function QuizCreate({ heroContent }) {
+export default function QuizCreate({ heroContent, questions }) {
   const [dropdownOpen, setDropdownOpen] = useState([
     false,
     false,
@@ -43,13 +43,13 @@ export default function QuizCreate({ heroContent }) {
           )}
           {dropdownOpen[index] && (
             <div className='absolute z-30 top-5 left-[100px] mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
-              {quizTopics.map((quiz, quizIndex) => (
+              {questions.map((quiz, quizIndex) => (
                 <div
                   key={quizIndex}
                   className='px-4 py-2 hover:bg-gray-200 cursor-pointer'
                   onClick={() => handleSelectQuiz(quiz, index)}
                 >
-                  {quiz.topic}
+                  {quiz.question}
                 </div>
               ))}
             </div>

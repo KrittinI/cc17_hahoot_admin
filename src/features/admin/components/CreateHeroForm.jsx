@@ -14,7 +14,7 @@ const initialInput = {
   eventPicture: ''
 };
 
-export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent }) {
+export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent, questions }) {
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [input, setInput] = useState(initialInput);
@@ -86,7 +86,7 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent 
         <div className='bg-[#F8FAFF] p-4 rounded-2xl flex flex-col gap-2'>
           <div className='text-2xl'>My Quiz</div>
           <div>
-            <QuizCreate heroContent={heroContent} />
+            <QuizCreate heroContent={heroContent} questions={questions} />
           </div>
         </div>
       </div>

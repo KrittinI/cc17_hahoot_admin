@@ -19,6 +19,7 @@ export default function RowTable({
   gridRowTable
 }) {
   const [open, setOpen] = useState(false);
+  const [tableRow, setTableRow] = useState([]);
 
   const handleBanClick = () => {
     setSelectedUser(item);
@@ -43,7 +44,7 @@ export default function RowTable({
       <div className="col-span-1 text-font-body">{item.detail4}</div>
       <div className="col-span-1 text-font-body">{item.detail5}</div>
       <div role="button" className="col-span-1 text-font-body ">
-        <div className="flex justify-center items-center text-center ">{item.detail6 === "Active" ? <LockIcon /> : <UnlockIcon /> }</div>
+        <div className="flex justify-center items-center text-center ">{item.detail6 === "Active" ? <LockIcon /> : <UnlockIcon />}</div>
       </div>
       <div className="grid gap-4">
         <Modal

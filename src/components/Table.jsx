@@ -21,7 +21,7 @@ export default function Table({ title, header, data, gridCols, }) {
     key: null,
     direction: 'ascending',
   });
-
+  console.log(header);
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key) {
       let keyA =

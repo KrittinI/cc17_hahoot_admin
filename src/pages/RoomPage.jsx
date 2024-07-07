@@ -2,7 +2,7 @@ import AdminSideBar from '../features/admin/components/AdminSideBar';
 import Table from '../components/Table';
 import SplitScreen from '../layouts/SplitScreen';
 import DoughnutChart from '../components/DoughnutChart';
-import RowTableRooms from '../features/admin/components/RowTableRooms';
+import RowTableRooms from '../features/rooms/components/RowTableRooms';
 const roomsTable = [
   { title: 'Username', colSpan: 2, name: 'username' },
   { title: 'E-Mail', colSpan: 2, name: 'email' },

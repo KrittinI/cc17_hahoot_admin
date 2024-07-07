@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Table from "../../../components/Table";
-import RowTableEvents from "../../admin/components/RowTableEvents";
+import RowTableEvents from "./RowTableEvents";
 
 export default function EventsListLeft({ events, topics }) {
     const newModel = events.map(event => {

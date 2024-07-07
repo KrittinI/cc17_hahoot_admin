@@ -13,27 +13,15 @@ const gridMap = {
 
 export default function RowTableUser({
   item,
-  onBanUser,
-  onUnBanUser,
-  setSelectedUser,
   gridRowTable,
+  onConfirm
 }) {
   const [open, setOpen] = useState(false);
 
-  const handleBanClick = () => {
-    setSelectedUser(item);
-    setOpen(true);
-  };
-
-  const handleConfirmBan = () => {
-    onBanUser(item);
-    setOpen(false);
-  };
-
-  const handleConfirmUnBan = () => {
-    onUnBanUser(item);
-    setOpen(false);
-  };
+  const onAgree = () => {
+    onConfirm(item[0])
+    setOpen(false)
+  }
   return (
     <div className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}>
       <div className="col-span-1 text-font-body">{item[0]}</div>
@@ -42,24 +30,22 @@ export default function RowTableUser({
       <div className="col-span-1 text-font-body">{item[3]}</div>
       <div className="col-span-1 text-font-body">{item[4]}</div>
       <div role="button" className="col-span-1 text-font-body ">
-        <div className="flex justify-center items-center text-center ">{!item[5] ? <LockIcon /> : <UnlockIcon />}</div>
+        <div className="flex justify-center items-center text-center " onClick={() => setOpen(true)}>{!item[5] ? <LockIcon /> : <UnlockIcon />}</div>
       </div>
       <div className="grid gap-4">
         <Modal
           open={open}
           onClose={() => setOpen(false)}
           title={
-            item.detail5 === "Active"
-              ? `Are you want to Banning this user`
-              : `Are you want to Unbanning this user`
+            item[5]
+              ? `Are you want to Ban this user`
+              : `Are you want to Unban this user`
           }
         >
           <BannedUser
-            onConfirm={
-              item.detail5 === "Active" ? handleConfirmBan : handleConfirmUnBan
-            }
+            onConfirm={onAgree}
             onCancel={() => setOpen(false)}
-            isActive={item.detail5 === "Active"}
+            isActive={item[5]}
           />
         </Modal>
       </div>

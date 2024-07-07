@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Table from "../../../components/Table";
-import RowTableQuestions from "../../admin/components/RowTableQuestions";
+import RowTableQuestions from "./RowTableQuestions";
 
 export default function QuizStoreLeft({ questions, topics }) {
     const newModel = questions.map(question => {

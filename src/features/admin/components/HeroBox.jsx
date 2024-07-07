@@ -5,6 +5,7 @@ import QuizCard from "./QuizCard";
 import EditHeroForm from "./EditHeroForm";
 import CreateHeroForm from "./CreateHeroForm";
 import Button from "../../../components/Button";
+import useAdmin from "../../../hooks/useAdmin";
 
 // const dataContent = {
 //   image: defaultImage,
@@ -50,7 +51,8 @@ import Button from "../../../components/Button";
 
 
 
-export default function HeroBox({ heroContent, setHeroContent, heros, questions }) {
+export default function HeroBox() {
+  const { heroContent, setHeroContent, heros, questions } = useAdmin()
   const [isCreate, setIsCreate] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 

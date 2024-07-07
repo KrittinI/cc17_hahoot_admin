@@ -2,6 +2,7 @@ import AdminSideBar from '../features/admin/components/AdminSideBar';
 import Table from '../components/Table';
 import SplitScreen from '../layouts/SplitScreen';
 import DoughnutChart from '../components/DoughnutChart';
+import RowTableRooms from '../features/admin/components/RowTableRooms';
 const roomsTable = [
   { title: 'Username', colSpan: 2, name: 'username' },
   { title: 'E-Mail', colSpan: 2, name: 'email' },
@@ -87,7 +88,11 @@ export default function RoomPage() {
     <>
       <div className='flex w-[65%] mx-auto'>
         <SplitScreen>
-          <Table title={`Rooms`} header={roomsTable} data={dataRoomTable} />
+          <Table title={`Rooms`} header={roomsTable} data={dataRoomTable}>
+            {dataRoomTable.map((room, index) =>
+              <RowTableRooms key={index} item={room} />
+            )}
+          </Table>
           <div className='flex flex-col gap-2'>
             <div className='bg-white rounded-xl col-span-1 flex flex-col gap-2 p-4 justify-between'>
               <h1 className='text-[#343C6A] w-full text-base'> Rooms Statistics</h1>

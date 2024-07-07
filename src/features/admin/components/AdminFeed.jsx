@@ -2,34 +2,10 @@ import BarChart from "../../../components/BarChart";
 import Button from "../../../components/Button";
 import logo from "../../../assets/icon-hh.png"
 import HeroBox from "./HeroBox";
-import { useState } from "react";
-import { useEffect } from "react";
-import topicApi from "../../../api/topic";
-import adminApi from "../../../api/admin";
+import useAdmin from "../../../hooks/useAdmin";
 
 export default function AdminFeed() {
-  const [topics, setTopics] = useState([])
-  const [heros, setHeros] = useState([])
-  const [questions, setQuestions] = useState([])
-  const [events, setEvents] = useState([])
-  const [users, setUsers] = useState([])
-  const [rooms, setRooms] = useState([])
-  const [heroContent, setHeroContent] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await adminApi.getAllData()
-      console.log(res.data.heros);
-      setTopics(res.data.topics)
-      setHeros(res.data.heros)
-      setQuestions(res.data.questions)
-      setEvents(res.data.events)
-      setUsers(res.data.users)
-      setRooms(res.data.rooms)
-      setHeroContent(res.data.heros.find(hero => hero.isActive))
-    }
-    fetchData()
-  }, [])
+  const { users, questions, events, rooms, topics } = useAdmin()
 
   return (
     <div className="grid grid-cols-3 gap-x-2 gap-y-4 pt-8">
@@ -58,7 +34,7 @@ export default function AdminFeed() {
       </div>
 
       <div className="col-span-3">
-        <HeroBox heroContent={heroContent} setHeroContent={setHeroContent} heros={heros} questions={questions} />
+        <HeroBox />
       </div>
     </div>
   );

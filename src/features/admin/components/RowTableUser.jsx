@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Modal from "./Modal";
-import ModalTable from "./ModalTable";
-import { LockIcon, UnlockIcon } from "../icons/Banned";
+import Modal from "../../../components/Modal";
+import BannedUser from "../../../components/BannedUser";
+import { LockIcon, UnlockIcon } from "../../../icons/Banned";
 
 const gridMap = {
   6: 'grid-cols-6',
@@ -11,15 +11,14 @@ const gridMap = {
 }
 
 
-export default function RowTable({
+export default function RowTableUser({
   item,
   onBanUser,
   onUnBanUser,
   setSelectedUser,
-  gridRowTable
+  gridRowTable,
 }) {
   const [open, setOpen] = useState(false);
-  const [tableRow, setTableRow] = useState([]);
 
   const handleBanClick = () => {
     setSelectedUser(item);
@@ -35,16 +34,15 @@ export default function RowTable({
     onUnBanUser(item);
     setOpen(false);
   };
-
   return (
     <div className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}>
-      <div className="col-span-1 text-font-body">{item.detail1}</div>
-      <div className="col-span-1 text-font-body">{item.detail2}</div>
-      <div className="col-span-2 text-font-body">{item.detail3}</div>
-      <div className="col-span-1 text-font-body">{item.detail4}</div>
-      <div className="col-span-1 text-font-body">{item.detail5}</div>
+      <div className="col-span-1 text-font-body">{item[0]}</div>
+      <div className="col-span-1 text-font-body">{item[1]}</div>
+      <div className="col-span-2 text-font-body">{item[2]}</div>
+      <div className="col-span-1 text-font-body">{item[3]}</div>
+      <div className="col-span-1 text-font-body">{item[4]}</div>
       <div role="button" className="col-span-1 text-font-body ">
-        <div className="flex justify-center items-center text-center ">{item.detail6 === "Active" ? <LockIcon /> : <UnlockIcon />}</div>
+        <div className="flex justify-center items-center text-center ">{!item[5] ? <LockIcon /> : <UnlockIcon />}</div>
       </div>
       <div className="grid gap-4">
         <Modal
@@ -56,7 +54,7 @@ export default function RowTable({
               : `Are you want to Unbanning this user`
           }
         >
-          <ModalTable
+          <BannedUser
             onConfirm={
               item.detail5 === "Active" ? handleConfirmBan : handleConfirmUnBan
             }

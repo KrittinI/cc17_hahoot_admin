@@ -1,3 +1,4 @@
+import AdminContextProvider from "./contexts/AdminContext";
 import AuthContextProvider from "./contexts/AuthContext";
 import Router from "./routes";
 
@@ -5,7 +6,9 @@ function App() {
   return (
     <div>
       <AuthContextProvider>
-        <Router />
+        <AdminContextProvider>
+          <Router />
+        </AdminContextProvider>
       </AuthContextProvider>
     </div>
   );

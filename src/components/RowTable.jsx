@@ -19,7 +19,6 @@ export default function RowTable({
   gridRowTable
 }) {
   const [open, setOpen] = useState(false);
-  const [tableRow, setTableRow] = useState([]);
 
   const handleBanClick = () => {
     setSelectedUser(item);

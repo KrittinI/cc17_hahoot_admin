@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import RowTable from "./RowTable";
 
 const gridMap = {
@@ -16,6 +17,35 @@ const colSpanMap = {
 };
 
 export default function Table({ title, header, data, gridCols, }) {
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction: 'ascending',
+  });
+
+  const sortedData = [...data].sort((a, b) => {
+    if (sortConfig.key) {
+      let keyA =
+        a[`detail${header.findIndex((h) => h.name === sortConfig.key) + 1}`];
+      let keyB =
+        b[`detail${header.findIndex((h) => h.name === sortConfig.key) + 1}`];
+
+      if (keyA < keyB) {
+        return sortConfig.direction === 'ascending' ? -1 : 1;
+      }
+      if (keyA > keyB) {
+        return sortConfig.direction === 'ascending' ? 1 : -1;
+      }
+    }
+    return 0;
+  });
+
+  const handleSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
   return (
     <div>
       <div className="bg-white p-4 rounded-xl">
@@ -33,10 +63,10 @@ export default function Table({ title, header, data, gridCols, }) {
             key={index}
             item={item}
             gridRowTable={'7'}
-            
-            // onBanUser={handleBanUser}
-            // onUnBanUser={handleUnBanUser}
-            // setSelectedUser={setSelectedUser}
+
+          // onBanUser={handleBanUser}
+          // onUnBanUser={handleUnBanUser}
+          // setSelectedUser={setSelectedUser}
           />
         ))}
       </div>

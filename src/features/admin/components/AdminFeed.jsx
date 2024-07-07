@@ -30,35 +30,35 @@ export default function AdminFeed() {
       name: "Coding",
     },
     {
-      id: 6,
+      id: 7,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 8,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 9,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 10,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 11,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 12,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 13,
       name: "Coding",
     },
     {
-      id: 6,
+      id: 14,
       name: "Coding",
     },
   ];

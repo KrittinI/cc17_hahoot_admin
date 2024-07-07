@@ -5,12 +5,12 @@ import SplitScreen from '../layouts/SplitScreen';
 
 export default function QuizStorePage() {
   const quizTable = [
-    { title: 'No.', colSpan: 1 },
-    { title: 'Title', colSpan: 2 },
-    { title: 'Topic', colSpan: 1},
-    { title: 'Create By', colSpan: 1 },
-    { title: 'Status', colSpan: 1 },
-    { title: 'Action', colSpan: 1 },
+    { title: 'No.', colSpan: 1, name: "no" },
+    { title: 'Title', colSpan: 2, name: "title" },
+    { title: 'Topic', colSpan: 1, name: "topic" },
+    { title: 'Create By', colSpan: 1, name: "createBy" },
+    { title: 'Status', colSpan: 1, name: "status" },
+    { title: 'Action', colSpan: 1, name: "action" },
   ];
 
   const dataQuizTable = [
@@ -18,47 +18,47 @@ export default function QuizStorePage() {
       detail1: '1',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Private",
+      detail4: "Username",
+      detail5: "Private",
     },
     {
       detail1: '2',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Private"
+      detail4: "Username",
+      detail5: "Private"
     },
     {
       detail1: '3',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Public"
+      detail4: "Username",
+      detail5: "Public"
     },
     {
       detail1: '4',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Private"
+      detail4: "Username",
+      detail5: "Private"
     },
     {
       detail1: '5',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Public"
+      detail4: "Username",
+      detail5: "Public"
     },
     {
       detail1: '6',
       detail2: 'ssSpotify@gmail.com',
       detail3: "Mathematics",
-      detail4:  "Username",
-      detail5:  "Private"
+      detail4: "Username",
+      detail5: "Private"
     },
   ];
-  const lables = ["active", "inactive","topic"];
-  const amount = [300, 200,100];
+  const lables = ["active", "inactive", "topic"];
+  const amount = [300, 200, 100];
   return (
     <div>
       <div className='w-[65%] mx-auto'>

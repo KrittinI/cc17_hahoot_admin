@@ -5,12 +5,12 @@ import SplitScreen from "../layouts/SplitScreen";
 
 export default function EventListPage() {
   const eventTable = [
-    { title: "No.", colSpan: 1 },
-    { title: "Title", colSpan: 3 },
-    { title: "Create by", colSpan: 2 },
-    { title: "Topic", colSpan: 3 },
-    { title: "Quiz list", colSpan: 1 },
-    { title: "Action", colSpan: 2 },
+    { title: "No.", colSpan: 1, name: "no" },
+    { title: "Title", colSpan: 3, name: "title" },
+    { title: "Create by", colSpan: 2, name: "createBy" },
+    { title: "Topic", colSpan: 3, name: "topic" },
+    { title: "Quiz list", colSpan: 1, name: "quizList" },
+    { title: "Action", colSpan: 2, name: "action" },
   ];
   const dataEventTable = [
     {
@@ -28,56 +28,60 @@ export default function EventListPage() {
       detail5: "500",
     },
     {
-      detail1: 'xBlackBean Subscription',
-      detail2: 'ssBlackBean@gmail.com',
-      detail3: '100',
-      detail4: '500',
-    },
-    {
-      detail1: 'BlackBean Subscription',
-      detail2: 'ssBlackBean@gmail.com',
-      detail3: '100',
-      detail4: '500',
-    },
-    {
       detail1: "3",
+      detail2: 'xBlackBean Subscription',
+      detail3: 'ssBlackBean@gmail.com',
+      detail4: '100',
+      detail5: '500',
+    },
+    {
+      detail1: "4",
+      detail2: 'BlackBean Subscription',
+      detail3: 'ssBlackBean@gmail.com',
+      detail4: '100',
+      detail5: '500',
+    },
+    {
+      detail1: "5",
       detail2: "cBlackBean Subscription",
       detail3: "Username",
       detail4: "Mathematics",
       detail5: "500",
     },
     {
-      detail1: "4",
+      detail1: "6",
       detail2: "vBlackBean Subscription",
       detail3: "Username",
       detail4: "Mathematics",
       detail5: "500",
     },
     {
-      detail1: "5",
+      detail1: "7",
       detail2: "bBlackBean Subscription",
       detail3: "Username",
       detail4: "Mathematics",
       detail5: "500",
     },
     {
-      detail1: 'BlackBean Subscription',
-      detail2: 'ssBlackBean@gmail.com',
-      detail3: '100',
-      detail4: '500',
+      detail1: "8",
+      detail2: 'BlackBean Subscription',
+      detail3: 'ssBlackBean@gmail.com',
+      detail4: '100',
+      detail5: '500',
     },
     {
-      detail1: "7",
+      detail1: "9",
       detail2: "iSpotify Subscription",
       detail3: "Username",
       detail4: "Mathematics",
       detail5: "500",
     },
     {
-      detail1: 'Spotify Subscription',
-      detail2: 'ssSpotify@gmail.com',
-      detail3: '100',
-      detail4: '500',
+      detail1: "10",
+      detail2: 'Spotify Subscription',
+      detail3: 'ssSpotify@gmail.com',
+      detail4: '100',
+      detail5: '500',
     },
   ];
   const lables = ["Topic1", "Topic2", "Topic3", "Topic4", "Topic5"];

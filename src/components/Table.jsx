@@ -21,7 +21,7 @@ export default function Table({ title, header, data, gridCols, }) {
     key: null,
     direction: 'ascending',
   });
-  console.log(header);
+  console.log(sortConfig);
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key) {
       let keyA =
@@ -52,13 +52,18 @@ export default function Table({ title, header, data, gridCols, }) {
         <h1 className="bg-white text-font-title ">{title}</h1>
         <div className={`grid ${gridMap[gridCols]} py-2 pl-1 text-center text-font-title-card text-[#718EBF] justify-around`}>
           {header.map((table, index) => (
-            <div key={index} className={colSpanMap[table.colSpan]}>
+            <div key={index} className={colSpanMap[table.colSpan]} onClick={() => handleSort(table.name)}>
               {table.title}
+              {sortConfig.key === table.name
+                ? sortConfig.direction === 'ascending'
+                  ? ' ▲'
+                  : ' ▼'
+                : null}
             </div>
           ))}
         </div>
         <hr className="shadow-2" />
-        {data.map((item, index) => (
+        {sortedData.map((item, index) => (
           <RowTable
             key={index}
             item={item}

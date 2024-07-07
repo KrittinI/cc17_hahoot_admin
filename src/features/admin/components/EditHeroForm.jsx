@@ -1,33 +1,31 @@
 import { useState } from 'react';
-import QuizItem from '../../../components/QuizItem';
 import Button from '../../../components/Button';
+import QuizCard from './QuizCard';
+import defaultImage from "../../../assets/hh-hero.png";
 
-export default function EditHeroForm({ handleSave, heroContent, heros, onCancel }) {
-  const [selectHero, setSelectHero] = useState('');
-  const [quizDetail, setQuizDetail] = useState([]);
-  const [selectedHero, setSelectedHero] = useState(null);
+
+export default function EditHeroForm({ setHeroContent, heroContent, heros, onSuccess }) {
+  const [selectedHero, setSelectedHero] = useState(heroContent);
 
   const handleChange = (e) => {
     const heroId = e.target.value;
     const hero = heros.find((h) => h.id === parseInt(heroId));
-    setSelectHero(heroId);
     setSelectedHero(hero);
-    setQuizDetail([
-      hero.question1,
-      hero.question2,
-      hero.question3,
-      hero.question4,
-    ]);
   };
+
+  const handleClickSave = () => {
+    setHeroContent(selectedHero)
+    onSuccess()
+  }
 
   return (
     <div className='flex flex-col'>
       <div className='flex gap-6'>
         {/* ########### LEFT BLOCK ########### */}
-        <div className='w-[832px] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl flex'>
+        <div className='w-[60%] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl flex'>
           {/* ========================== IMAGE ========================== */}
           <img
-            src={selectedHero && selectedHero.eventPicture}
+            src={selectedHero?.eventPicture || defaultImage}
             alt='No Image'
             className='bg-red w-2/3 rounded-2xl'
           />
@@ -39,7 +37,7 @@ export default function EditHeroForm({ handleSave, heroContent, heros, onCancel 
               <select
                 className='bg-white border border-[#86868b]  rounded-[8px] w-full h-[40px] p-2 hover:cursor-pointer'
                 onChange={handleChange}
-                value={selectHero}
+                value={selectedHero?.id}
               >
                 <option value=''>Please select title</option>
                 {heros.map((hero) => (
@@ -51,27 +49,28 @@ export default function EditHeroForm({ handleSave, heroContent, heros, onCancel 
             </div>
 
             {/* ========================== DETAIl ========================== */}
-            <div className='bg-white border border-[#86868b] rounded-xl w-full h-full p-4 overflow-auto'>
+            <div className='bg-white border border-[#86868b] rounded-xl h-full p-4 overflow-auto'>
               {selectedHero && <div>{selectedHero.detail}</div>}
             </div>
           </div>
         </div>
         {/* ########### RIGHT BLOCK ########### */}
-        <div className='bg-[#F8FAFF] p-4 rounded-2xl flex flex-col gap-2'>
+        <div className='bg-[#F8FAFF] w-[40%] p-4 rounded-2xl flex flex-col gap-2'>
           <div className='text-2xl'>My Quiz</div>
-          <div>
-            <QuizItem selectedHero={selectedHero} quizDetail={quizDetail} />
-          </div>
+          <QuizCard saveQuizDetail={selectedHero?.question1} />
+          <QuizCard saveQuizDetail={selectedHero?.question2} />
+          <QuizCard saveQuizDetail={selectedHero?.question3} />
+          <QuizCard saveQuizDetail={selectedHero?.question4} />
         </div>
       </div>
 
       <br />
 
       <div className='flex gap-4 justify-around'>
-        <Button bg={`green`} color={`white`} width={60} onClick={handleSave}>
+        <Button bg={`green`} color={`white`} width={60} onClick={handleClickSave}>
           SAVE
         </Button>
-        <Button bg={`black`} width={60} onClick={onCancel}>
+        <Button bg={`black`} width={60} onClick={onSuccess}>
           Cancel
         </Button>
       </div>

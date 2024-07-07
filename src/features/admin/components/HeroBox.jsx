@@ -3,8 +3,6 @@ import ContentCard from "./ContentCard";
 import Modal from "../../../components/Modal";
 import QuizCard from "./QuizCard";
 import EditHeroForm from "./EditHeroForm";
-import imageQuiz from "../../../assets/editIcon.png";
-import imageProfile from "../../../assets/user.png";
 import CreateHeroForm from "./CreateHeroForm";
 import Button from "../../../components/Button";
 
@@ -57,34 +55,33 @@ const oneHero = {
     'The National Mathematics Day is celebrated on 22nd December to celebrate the birthday of eminent mathematician Srinivasa Ramanujan. It was designated by the Indian Government in 2011. Despite his lack of formal education, Ramanujan is noted as one of the greatest mathematicians of all time. ',
   eventPicture: null,
   icon: null,
-  quiz1: {
-    image: imageQuiz,
-    topic: "This is Detail A",
-    profileImage: imageProfile,
-    name: "Mathematis1",
-  },
-  quiz2: {
-    image: imageQuiz,
-    topic: "This is Detail B",
-    profileImage: imageProfile,
-    name: "Mathematis2",
-  },
-  quiz3: {
-    image: imageQuiz,
-    topic: "This is Detail C",
-    profileImage: imageProfile,
-    name: "Mathematis3",
-  },
-  quiz4: {
-    image: imageQuiz,
-    topic: "This is Detail D",
-    profileImage: imageProfile,
-    name: "Mathematis4",
-  },
+  quiz1: 1,
+  quiz2: 2,
+  quiz3: 3,
+  quiz4: 4,
   createdAt: '2024-07-05T01:50:50.996Z',
-  updatedAt: '2024-07-05T07:14:31.728Z',
+  updatedAt: '2024-07-05T09:47:32.015Z',
   isActive: false,
-};
+  question1: {
+    question:
+      'What number makes this number sentence true? 4 x 3 = _____ x 4',
+    questionPicture: null,
+  },
+  question2: {
+    question:
+      'Spiders are a type of arachnid. Arachnids normally have 8 legs. How many legs on 3 spiders?',
+    questionPicture: null,
+  },
+  question3: {
+    question:
+      'What number makes this number sentence true? 4 x 3 = _____ x 4',
+    questionPicture: null,
+  },
+  question4: {
+    question: 'Which number is an example of a square number?',
+    questionPicture: null,
+  },
+}
 
 const heros = [
   {
@@ -286,14 +283,6 @@ export default function HeroBox() {
   const [isCreate, setIsCreate] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [heroContent, setHeroContent] = useState(oneHero);
-  const handleEdit = () => {
-    setIsEdit(true);
-  };
-
-  const handleSave = () => {
-    setHeroContent(heroContent);
-    setIsEdit(false);
-  };
 
   return (
     <div className="flex flex-col bg-white rounded-xl p-4">
@@ -303,10 +292,10 @@ export default function HeroBox() {
           <ContentCard dataContent={heroContent} />
         </div>
         <div className="flex flex-col col-span-1 gap-y-4">
-          <QuizCard saveQuizDetail={heroContent.quiz1} />
-          <QuizCard saveQuizDetail={heroContent.quiz2} />
-          <QuizCard saveQuizDetail={heroContent.quiz3} />
-          <QuizCard saveQuizDetail={heroContent.quiz4} />
+          <QuizCard saveQuizDetail={heroContent?.question1} />
+          <QuizCard saveQuizDetail={heroContent?.question2} />
+          <QuizCard saveQuizDetail={heroContent?.question3} />
+          <QuizCard saveQuizDetail={heroContent?.question4} />
         </div>
       </div>
       <div className="flex justify-end pt-6">
@@ -316,23 +305,21 @@ export default function HeroBox() {
           </Button>
           <Modal
             open={isCreate}
-
             title={"Create New Hero Content"}
           >
             <CreateHeroForm
-              onCancel={() => setIsCreate(false)}
+              onSuccess={() => setIsCreate(false)}
               setHeroContent={setHeroContent}
-              handleSave={handleSave}
               heroContent={heroContent}
             />
           </Modal>
-          <Button bg={`black`} width={60} onClick={handleEdit}>
+          <Button bg={`black`} width={60} onClick={() => setIsEdit(true)}>
             Edit
           </Button>
-          <Modal open={isEdit} title={"EDIT"}>
+          <Modal open={isEdit} title={"Edit Show Hero"}>
             <EditHeroForm
-              onCancel={() => setIsEdit(false)}
-              handleSave={handleSave}
+              onSuccess={() => setIsEdit(false)}
+              setHeroContent={setHeroContent}
               heroContent={heroContent}
               heros={heros}
             />

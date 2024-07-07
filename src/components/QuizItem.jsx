@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import { useState } from 'react';
+import imageQuiz from "../assets/editIcon.png";
 
 export default function QuizItem({ selectedHero }) {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -29,7 +30,7 @@ export default function QuizItem({ selectedHero }) {
         >
           <div className='w-[100px] h-[60px] flex justify-center relative'>
             <img
-              src={item?.questionPicture}
+              src={item?.questionPicture || imageQuiz}
               alt='No Image'
               className='w-full rounded-[8px] h-full'
             />

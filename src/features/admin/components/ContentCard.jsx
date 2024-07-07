@@ -10,7 +10,7 @@ export default function ContentCard({ dataContent }) {
               src={dataContent?.eventPicture || defaultImage}
               className="w-1/2 h-[294px] rounded-md"
             />
-            <div className="grid gap-y-3">
+            <div className="gap-y-3">
               <div>
                 <h1 className="text-font-title-card">Title</h1>
                 <div className=" p-2 rounded-lg shadow text-font-body border border-grey">
@@ -19,7 +19,7 @@ export default function ContentCard({ dataContent }) {
               </div>
               <div>
                 <h1 className="text-font-title-card">Detail</h1>
-                <div className="p-2 rounded-lg shadow text-font-body border border-grey">
+                <div className="p-2 rounded-lg max-h-[50%] overflow-auto shadow text-font-body border border-grey">
                   {dataContent?.detail}
                 </div>
               </div>

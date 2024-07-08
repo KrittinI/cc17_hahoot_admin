@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../../../components/Modal";
 import BannedUser from "../../../components/BannedUser";
 import { LockIcon, UnlockIcon } from "../../../icons/Banned";
+import DeleteIcon from "../../../icons/delete";
 
 const gridMap = {
   6: "grid-cols-6",
@@ -30,33 +31,21 @@ export default function RowTableQuestions({ item, gridRowTable, onConfirm }) {
           className="flex justify-center items-center text-center "
           onClick={() => setOpen(true)}
         >
-          {!item[5] ? <LockIcon /> : <UnlockIcon />}
+          <DeleteIcon />
         </div>
       </div>
       <div className="grid gap-4">
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-          title={
-            item[5] ? (
-              <div className="flex flex-col justify-center items-center gap-8">
-                <div className="w-[80%] text-center">
-                  Are you want to Ban this user
-                </div>
-                <div className="w-[80px] h-[80px] border-4 border-red rounded-full justify-center items-center flex">
-                  <LockIcon size={12} />
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col justify-center items-center gap-8">
-                <div className="w-[80%] text-center">
-                  Are you want to Unban this user
-                </div>
-                <div className="w-[80px] h-[80px] border-4 border-darkgreen rounded-full justify-center items-center flex">
-                  <UnlockIcon size={12} />
-                </div>
-              </div>
-            )
+          title={   <div className="flex flex-col justify-center items-center gap-8">
+            <div className="w-[80%] text-center">
+              Are you want to delete this Question
+            </div>
+            <div className="w-[90px] h-[90px] border-4 border-red rounded-full justify-center items-center flex">
+              <DeleteIcon size={10} />
+            </div>
+          </div>
           }
         >
           <BannedUser

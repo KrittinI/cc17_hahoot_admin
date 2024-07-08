@@ -5,9 +5,13 @@ import { PiBagFill } from "react-icons/pi";
 import Logo from "../../../assets/icon-hh.png";
 import { FaDiceD6 } from "react-icons/fa";
 import { BsGraphUpArrow } from "react-icons/bs";
+import useAdmin from "../../../hooks/useAdmin";
 
 export default function AdminMenu() {
   const navigate = useNavigate();
+  const { users, questions, events, rooms} = useAdmin();
+
+  console.log("---------", users?.length);
 
   const handleClick = (path) => {
     navigate(path);
@@ -16,7 +20,7 @@ export default function AdminMenu() {
     {
       id: 4,
       name: "Overview",
-      number: 100,
+      number: null,
       icon: (
         <BsGraphUpArrow className="bg-[#E7EDFF] text-darkblue rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
       ),
@@ -25,7 +29,7 @@ export default function AdminMenu() {
     {
       id: 1,
       name: "Users",
-      number: 200,
+      number: users?.length,
       icon: (
         <IoPerson className="bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
       ),
@@ -35,7 +39,7 @@ export default function AdminMenu() {
     {
       id: 2,
       name: "Events",
-      number: 300,
+      number: events?.length,
       icon: (
         <PiBagFill className="bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
       ),
@@ -44,7 +48,7 @@ export default function AdminMenu() {
     {
       id: 3,
       name: "Questions",
-      number: 400,
+      number: questions?.length,
       icon: (
         <img
           src={Logo}
@@ -57,7 +61,7 @@ export default function AdminMenu() {
     {
       id: 5,
       name: "Rooms",
-      number: 400,
+      number: rooms?.length,
       icon: (
         <FaDiceD6 className="bg-gray-300 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
       ),

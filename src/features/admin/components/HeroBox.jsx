@@ -28,10 +28,10 @@ export default function HeroBox() {
           </div>
         </div>
         <div className="flex justify-start gap-12 w-full">
-          <Button bg={`blue`} width={60} onClick={() => setIsCreate(true)}>
+          <Button bg={`black`} width={60} onClick={() => setIsCreate(true)}>
             Create New Content
           </Button>
-          <Button bg={`black`} width={60} onClick={() => setIsEdit(true)}>
+          <Button bg={`blue`} width={60} onClick={() => setIsEdit(true)}>
             Edit
           </Button>
         </div>
@@ -41,7 +41,7 @@ export default function HeroBox() {
         title={"Create New Hero Content"}
         j="start"
       >
-         <hr className="shadow-2"/>
+        <hr className="shadow-2" />
         <CreateHeroForm
           onSuccess={() => setIsCreate(false)}
           setHeroContent={setHeroContent}
@@ -50,7 +50,7 @@ export default function HeroBox() {
         />
       </Modal>
       <Modal open={isEdit} title={"Edit Show Hero"} j="start">
-        <hr className="shadow-2"/>
+        <hr className="shadow-2" />
         <EditHeroForm
           onSuccess={() => setIsEdit(false)}
           setHeroContent={setHeroContent}

@@ -24,6 +24,7 @@ export default function CreateHeroForm({
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [input, setInput] = useState(initialInput);
+  const [error, setError] = useState("")
 
   const handleImageClick = () => {
     fileInputRef.current.click();
@@ -31,6 +32,7 @@ export default function CreateHeroForm({
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setError("")
   };
 
   const handleFileChange = (e) => {
@@ -42,6 +44,9 @@ export default function CreateHeroForm({
 
   const handleClickSave = async () => {
     try {
+      if (!file || !input.title || !input.detail || !input.quiz1 || !input.quiz2 || !input.quiz3 || !input.quiz4) {
+        return setError("Please Fill All Form")
+      }
       const formData = new FormData()
       formData.append("eventPicture", file)
       formData.append("hero", JSON.stringify(input))
@@ -143,6 +148,7 @@ export default function CreateHeroForm({
         >
           Save
         </Button>
+        {error && <h1 className="text-font-body text-darkred font-semibold flex items-center">{error}</h1>}
       </div>
     </div>
   );

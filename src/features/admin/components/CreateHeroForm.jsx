@@ -144,7 +144,7 @@ export default function CreateHeroForm({
           width={60}
           onClick={handleClickSave}
         >
-          SAVE
+          Save
         </Button>
       </div>
     </div>

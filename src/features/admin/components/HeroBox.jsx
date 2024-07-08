@@ -39,6 +39,7 @@ export default function HeroBox() {
       <Modal
         open={isCreate}
         title={"Create New Hero Content"}
+        j="start"
       >
         <CreateHeroForm
           onSuccess={() => setIsCreate(false)}

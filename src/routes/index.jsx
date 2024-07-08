@@ -1,8 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layouts/MainContainer';
-import HomePage from '../pages/HomePage';
-import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import AdminHomePage from '../pages/AdminHomePage';
 import EventListPage from '../pages/EventListPage';
@@ -19,11 +17,6 @@ const router = createBrowserRouter([
       </>
     ),
     children: [
-      { path: '/', element: <HomePage /> },
-      {
-        path: '/register',
-        element: <RegisterPage />,
-      },
       {
         path: '/login',
         element: <LoginPage />,
@@ -33,15 +26,15 @@ const router = createBrowserRouter([
         element: <AdminHomePage />,
       },
       {
-        path: '/admin/eventList',
+        path: '/admin/event-list',
         element: <EventListPage />,
       },
       {
-        path: '/admin/quizStore',
+        path: '/admin/quiz-store',
         element: <QuizStorePage />,
       },
       {
-        path: '/admin/userProfile',
+        path: '/admin/user-profile',
         element: <UserProfilePage />,
       },
       {

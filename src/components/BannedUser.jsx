@@ -1,6 +1,6 @@
 export default function ModalTable({ onCancel, onConfirm, isActive }) {
   return (
-    <div className="flex">
+    <div className="flex justify-around">
       <button
         className="bg-green p-2 rounded-xl hover:bg-darkgreen"
         onClick={onConfirm}

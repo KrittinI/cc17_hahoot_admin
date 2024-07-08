@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import RowTable from "./RowTable";
 
 const gridMap = {
   7: "grid-cols-7",
@@ -16,46 +14,18 @@ const colSpanMap = {
   6: "col-span-6",
 };
 
-export default function Table({ title, header, data, gridCols, }) {
-  const [sortConfig, setSortConfig] = useState({
-    key: null,
-    direction: 'ascending',
-  });
-  console.log(sortConfig);
-  const sortedData = [...data].sort((a, b) => {
-    if (sortConfig.key) {
-      let keyA =
-        a[`detail${header.findIndex((h) => h.name === sortConfig.key) + 1}`];
-      let keyB =
-        b[`detail${header.findIndex((h) => h.name === sortConfig.key) + 1}`];
+export default function Table({ title, header, handleSort, gridCols, children, sortConfig }) {
 
-      if (keyA < keyB) {
-        return sortConfig.direction === 'ascending' ? -1 : 1;
-      }
-      if (keyA > keyB) {
-        return sortConfig.direction === 'ascending' ? 1 : -1;
-      }
-    }
-    return 0;
-  });
-
-  const handleSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
   return (
     <div>
       <div className="bg-white p-4 rounded-xl">
         <h1 className="bg-white text-font-title ">{title}</h1>
         <div className={`grid ${gridMap[gridCols]} py-2 pl-1 text-center text-font-title-card text-[#718EBF] justify-around`}>
           {header.map((table, index) => (
-            <div key={index} className={colSpanMap[table.colSpan]} onClick={() => handleSort(table.name)}>
+            <div key={index} className={colSpanMap[table.colSpan]} role='button' onClick={() => handleSort(table.name, sortConfig.direction)}>
               {table.title}
-              {sortConfig.key === table.name
-                ? sortConfig.direction === 'ascending'
+              {sortConfig?.key === table.name
+                ? sortConfig?.direction
                   ? ' ▲'
                   : ' ▼'
                 : null}
@@ -63,17 +33,7 @@ export default function Table({ title, header, data, gridCols, }) {
           ))}
         </div>
         <hr className="shadow-2" />
-        {sortedData.map((item, index) => (
-          <RowTable
-            key={index}
-            item={item}
-            gridRowTable={'7'}
-
-          // onBanUser={handleBanUser}
-          // onUnBanUser={handleUnBanUser}
-          // setSelectedUser={setSelectedUser}
-          />
-        ))}
+        {children}
       </div>
     </div>
   );

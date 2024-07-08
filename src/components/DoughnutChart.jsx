@@ -17,6 +17,8 @@ function DoughnutChart({ amount, lables }) {
           "#FDA1E9", // Pink
           "#718EBF", // Grey
           "#FFA600", // Orange
+          "#c934eb", // Purple
+          "#34ebd8", // Skyblue
           "#8F6C2C", // Brown
         ],
 

@@ -1,5 +1,4 @@
 import SideBarTab from '../../../components/SideBarTab';
-import { HomeIcon, TransactionsIcon } from '../../../icons/Admin';
 import { IoPerson } from 'react-icons/io5';
 import { BsGraphUpArrow, BsCreditCard } from 'react-icons/bs';
 import { GiReceiveMoney } from 'react-icons/gi';
@@ -8,19 +7,19 @@ import { IoIosSettings } from 'react-icons/io';
 import { AiFillHome } from 'react-icons/ai';
 import { GrTransaction } from 'react-icons/gr';
 
-export default function AdminSideBar() {
+export default function AdminSideBar({ onClick }) {
   const sideMenu = [
     {
       id: 1,
       icon: <AiFillHome className='w-full h-full' />,
-      name: 'Dashboard',
+      name: 'answer',
     },
     {
       id: 2,
       icon: <GrTransaction className='w-full h-full' />,
-      name: 'Transactions',
+      name: 'topic',
     },
-    { id: 3, icon: <IoPerson className='w-full h-full' />, name: 'Accounts' },
+    { id: 3, icon: <IoPerson className='w-full h-full' />, name: 'account' },
     {
       id: 4,
       icon: <BsGraphUpArrow className='w-full h-full' />,
@@ -53,7 +52,7 @@ export default function AdminSideBar() {
     <div className='bg-white p-4 flex flex-col gap-4 w-full rounded-xl'>
       {sideMenu.map((tab) => (
         <div key={tab.id}>
-          <SideBarTab icon={tab.icon} tabName={tab.name} />
+          <SideBarTab icon={tab.icon} tabName={tab.name} onClick={() => onClick(tab.name)} />
         </div>
       ))}
     </div>

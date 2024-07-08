@@ -18,13 +18,13 @@ ChartJS.register(
   Legend
 );
 
-export default function BarChart() {
+export default function BarChart({ serverData, serverLabels = ['Users', 'Events', 'Questions', 'Rooms'] }) {
   const data = {
-    labels: ['Users', 'Events', 'Questions', 'Rooms'],
+    labels: serverLabels,
     datasets: [
       {
         label: 'Users',
-        data: [450, 350, 400, 200],
+        data: serverData,
         backgroundColor: [
           '#60A5FA', // Blue
           '#FFDA45', // Yellow

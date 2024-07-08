@@ -32,7 +32,7 @@ export default function AdminMenu() {
           className='bg-[#FFF5D9]  rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle'
         />
       ),
-      link: '/admin/userProfile',
+      link: '/admin/user-profile',
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ export default function AdminMenu() {
       icon: (
         <PiBagFill className='bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
-      link: '/admin/eventList',
+      link: '/admin/event-list',
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ export default function AdminMenu() {
       icon: (
         <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
-      link: '/admin/quizStore',
+      link: '/admin/quiz-store',
     },
 
     {

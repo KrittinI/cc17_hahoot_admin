@@ -23,13 +23,14 @@ export default function BarChart({ serverData, serverLabels = ['Users', 'Events'
     labels: serverLabels,
     datasets: [
       {
-        label: 'Users',
+        // label: 'Users',
         data: serverData,
         backgroundColor: [
           '#60A5FA', // Blue
-          '#FFDA45', // Yellow
-          '#FB7185', // Red
           '#4ADE80', // Green
+          '#FB7185', // Red
+          '#FFDA45', // Yellow
+         
         ],
         borderRadius: 20,
         barThickness: 40,

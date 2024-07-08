@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Table from "../../../components/Table";
 import RowTableEvents from "./RowTableEvents";
+import useAdmin from "../../../hooks/useAdmin";
 
 export default function EventsListLeft({ events, topics }) {
+    const {setEvents} = useAdmin();
     const newModel = events.map(event => {
         const newEvent = {}
         newEvent.id = event.id
@@ -40,6 +42,18 @@ export default function EventsListLeft({ events, topics }) {
         });
         setSortedData(sortingData)
     };
+
+
+    const handleClickChangeStatus = (id) => {
+        const data = [...events]
+        const mockdata = [...sortedData]
+        const foundIndex = data.findIndex((el) => el.id === id)
+        const foundMockIndex = mockdata.findIndex((el) => el.id === id)
+        data.splice(foundIndex, 1, { ...data[foundIndex], isActive: !data[foundIndex].isActive })
+        mockdata.splice(foundMockIndex, 1, { ...mockdata[foundMockIndex], isActive: !mockdata[foundMockIndex].isActive })
+        setEvents(data)
+        setSortedData(mockdata)
+    }
     return (
         <div>
             <Table title={`Events`} header={eventTable} gridCols={'12'} handleSort={handleSort} sortConfig={sortConfig}>
@@ -48,6 +62,7 @@ export default function EventsListLeft({ events, topics }) {
                         key={event.id}
                         item={[event.id, event.title, event.creator, topics[event.topicId - 1].topicName, event.quizList, event.isActive]}
                         gridRowTable={'12'}
+                        onConfirm={handleClickChangeStatus}
                     />
                 )}
             </Table>

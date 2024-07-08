@@ -43,7 +43,7 @@ export default function QuizStoreLeft({ questions, topics }) {
     };
     return (
         <div>
-            <Table title={`Events`} header={quizTable} gridCols={'7'} handleSort={handleSort} sortConfig={sortConfig}>
+            <Table title={`Questions`} header={quizTable} gridCols={'7'} handleSort={handleSort} sortConfig={sortConfig}>
                 {sortedData.map((question) =>
                     <RowTableQuestions
                         key={question.id}

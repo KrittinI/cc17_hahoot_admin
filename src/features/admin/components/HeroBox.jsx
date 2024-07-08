@@ -16,7 +16,7 @@ export default function HeroBox() {
     <>
       <div className="flex flex-col bg-white gap-4 rounded-xl p-4">
         <div className="grid grid-cols-3 gap-x-10 gap-y-2">
-          <h1 className="text-font-title col-span-3">Edit Home Page Content</h1>
+          <h1 className="text-font-title col-span-3">Home Page Content</h1>
           <div className=" flex flex-col col-span-2 gap-y-4">
             <ContentCard dataContent={heroContent} />
           </div>

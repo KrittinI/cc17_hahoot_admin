@@ -39,7 +39,7 @@ export default function EditHeroForm({
             <img
               src={selectedHero?.eventPicture || defaultImage}
               alt="No Image"
-              className="object-cover"
+              className="object-cover rounded-lg"
             />
           </div>
           <div className="flex flex-col justify-between gap-3 col-span-3">

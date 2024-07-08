@@ -41,6 +41,7 @@ export default function HeroBox() {
         title={"Create New Hero Content"}
         j="start"
       >
+         <hr className="shadow-2"/>
         <CreateHeroForm
           onSuccess={() => setIsCreate(false)}
           setHeroContent={setHeroContent}
@@ -48,7 +49,8 @@ export default function HeroBox() {
           questions={questions}
         />
       </Modal>
-      <Modal open={isEdit} title={"Edit Show Hero"}>
+      <Modal open={isEdit} title={"Edit Show Hero"} j="start">
+        <hr className="shadow-2"/>
         <EditHeroForm
           onSuccess={() => setIsEdit(false)}
           setHeroContent={setHeroContent}

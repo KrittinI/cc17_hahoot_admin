@@ -58,7 +58,6 @@ export default function CreateHeroForm({
 
   return (
     <div className="flex flex-col p-4">
-      <hr className="shadow-2 border-grey" />
       <div className="flex gap-2">
         <div className="w-[800px] h-[280px] gap-4 p-4 rounded-xl grid grid-cols-5 ">
           <div

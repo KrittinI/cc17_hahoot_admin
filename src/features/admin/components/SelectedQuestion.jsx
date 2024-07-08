@@ -27,7 +27,7 @@ export default function SelectedQuestion({
     >
       <img
         src={selectQuestion?.questionPicture || imageQuiz}
-        className="max-w-[30%] "
+        className="max-w-[30%] rounded-lg"
       />
       <select
         value={value}

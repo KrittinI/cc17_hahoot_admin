@@ -7,7 +7,7 @@ import adminApi from '../../../api/admin';
 
 const initialInput = {
   title: '',
-  description: '',
+  detail: '',
   quiz1: 0,
   quiz2: 0,
   quiz3: 0,
@@ -37,14 +37,11 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, questions })
 
   const handleClickSave = async () => {
     try {
-      console.log(input);
       const formData = new FormData()
       formData.append("eventPicture", file)
       formData.append("hero", JSON.stringify(input))
-      console.log(...formData);
       const res = await adminApi.createHero(formData)
-      console.log(res);
-      setHeroContent({ ...input, eventPicture: URL.createObjectURL(file) })
+      setHeroContent({ ...res.data.hero })
       onSuccess()
     } catch (error) {
       console.log(error);
@@ -78,9 +75,9 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, questions })
               onChange={handleChangeInput}
             />
             <TextArea
-              name='description'
+              name='detail'
               placeholder='Description'
-              value={input?.description}
+              value={input?.detail}
               onChange={handleChangeInput}
             />
           </div>

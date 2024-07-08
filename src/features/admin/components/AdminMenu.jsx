@@ -9,9 +9,8 @@ import useAdmin from "../../../hooks/useAdmin";
 
 export default function AdminMenu() {
   const navigate = useNavigate();
-  const { users, questions, events, rooms} = useAdmin();
+  const { users, questions, events, rooms } = useAdmin();
 
-  console.log("---------", users?.length);
 
   const handleClick = (path) => {
     navigate(path);

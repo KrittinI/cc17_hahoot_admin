@@ -51,6 +51,7 @@ export default function CreateHeroForm({
       formData.append("eventPicture", file)
       formData.append("hero", JSON.stringify(input))
       const res = await adminApi.createHero(formData)
+      console.log(res);
       setHeroContent({ ...res.data.hero })
       onSuccess()
     } catch (error) {

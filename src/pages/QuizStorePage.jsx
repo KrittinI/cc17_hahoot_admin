@@ -4,7 +4,7 @@ import useAdmin from '../hooks/useAdmin';
 import QuizStoreLeft from '../features/quizStore/components/QuizStoreLeft';
 
 export default function QuizStorePage() {
-  const { topics, questions } = useAdmin()
+  const { topics, questions } = useAdmin();
   return (
     <div className='w-[65%] mx-auto'>
       <SplitScreen>

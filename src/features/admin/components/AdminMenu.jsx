@@ -16,7 +16,6 @@ export default function AdminMenu() {
     {
       id: 4,
       name: 'Overview',
-      number: 100,
       icon: (
         <IoPerson className='bg-[#E7EDFF] text-[#718EBF] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
@@ -25,7 +24,6 @@ export default function AdminMenu() {
     {
       id: 1,
       name: 'Users',
-      number: 200,
       icon: (
         <img
           src={Logo}
@@ -37,7 +35,6 @@ export default function AdminMenu() {
     {
       id: 2,
       name: 'Events',
-      number: 300,
       icon: (
         <PiBagFill className='bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
@@ -46,7 +43,6 @@ export default function AdminMenu() {
     {
       id: 3,
       name: 'Questions',
-      number: 400,
       icon: (
         <FaScrewdriverWrench className='bg-[#DCFAF8] text-[#16DBCC] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),
@@ -56,7 +52,6 @@ export default function AdminMenu() {
     {
       id: 5,
       name: 'Rooms',
-      number: 400,
       icon: (
         <FaDiceD6 className='bg-gray-300 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle' />
       ),

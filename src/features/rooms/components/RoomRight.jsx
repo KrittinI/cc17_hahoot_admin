@@ -2,9 +2,9 @@ import { useState } from 'react';
 import DoughnutChart from '../../../components/DoughnutChart';
 import AdminSideBar from '../../admin/components/AdminSideBar';
 
-export default function QuizStoreRight({ topics, questions }) {
+export default function RoomRight({ rooms, topics }) {
   const answers = {};
-  answers.amount = questions.reduce(
+  answers.amount = rooms.reduce(
     (a, c) => {
       switch (c.answer) {
         case 'A':
@@ -23,11 +23,13 @@ export default function QuizStoreRight({ topics, questions }) {
     },
     [0, 0, 0, 0]
   );
+
   answers.lables = ['A', 'B', 'C', 'D'];
   const topic = {};
   topic.lables = topics.map((topic) => topic.topicName);
+  console.log(topic.lables);
   const arr = new Array(topics.length).fill(0);
-  topic.amount = questions?.reduce((a, c) => {
+  topic.amount = rooms?.reduce((a, c) => {
     a[c.topicId - 1]++;
     return a;
   }, arr);
@@ -49,7 +51,7 @@ export default function QuizStoreRight({ topics, questions }) {
       <div className='flex flex-col gap-2'>
         <div className='bg-white rounded-xl col-span-1 flex flex-col gap-4 p-6 justify-between'>
           <h1 className='text-[#343C6A] w-full text-font-title'>
-            Questions Statistics
+            Rooms Statistics
           </h1>
           <DoughnutChart amount={data.amount} lables={data.lables} />
         </div>

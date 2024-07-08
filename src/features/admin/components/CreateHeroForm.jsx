@@ -2,7 +2,8 @@ import { useRef, useState } from 'react';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import TextArea from '../../../components/TextArea';
-import QuizCreate from './QuizCreate';
+import SelectedQuestion from './SelectedQuestion';
+import adminApi from '../../../api/admin';
 
 const initialInput = {
   title: '',
@@ -14,7 +15,7 @@ const initialInput = {
   eventPicture: ''
 };
 
-export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent, questions }) {
+export default function CreateHeroForm({ setHeroContent, onSuccess, questions }) {
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [input, setInput] = useState(initialInput);
@@ -34,17 +35,25 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent,
     }
   };
 
-  const handleClickSave = () => {
-    console.log(input);
-    console.log(URL.createObjectURL(file));
-    setHeroContent({ ...input, eventPicture: URL.createObjectURL(file) })
-    // onSuccess()
+  const handleClickSave = async () => {
+    try {
+      console.log(input);
+      const formData = new FormData()
+      formData.append("eventPicture", file)
+      formData.append("hero", JSON.stringify(input))
+      console.log(...formData);
+      const res = await adminApi.createHero(formData)
+      console.log(res);
+      setHeroContent({ ...input, eventPicture: URL.createObjectURL(file) })
+      onSuccess()
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-6'>
-        {/* LEFT BLOCK */}
         <div className='w-[832px] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl grid grid-cols-5 '>
           <div
             role='button'
@@ -82,12 +91,12 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, heroContent,
             onChange={handleFileChange}
           />
         </div>
-        {/* RIGHT BLOCK */}
-        <div className='bg-[#F8FAFF] p-4 rounded-2xl flex flex-col gap-2'>
+        <div className='bg-[#F8FAFF] max-w-[400px] p-4 rounded-2xl flex flex-col gap-2'>
           <div className='text-2xl'>My Quiz</div>
-          <div>
-            <QuizCreate heroContent={heroContent} questions={questions} />
-          </div>
+          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz1`} value={input.quiz1} />
+          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz2`} value={input.quiz2} />
+          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz3`} value={input.quiz3} />
+          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz4`} value={input.quiz4} />
         </div>
       </div>
       <div className='flex gap-4 justify-around '>

@@ -19,7 +19,7 @@ export default function Input({
       <input
         type={type}
         placeholder={placeholder}
-        className={`w-${width} px-3 py-1.5 border rounded-md focus:outline-none focus:ring-2 h-full ${positionMap[position]
+        className={`w-${width} px-3 py-1.5 border rounded-md focus:outline-none focus:ring-2 ${positionMap[position]
           } ${fontSize}
             ${error
             ? "border-red focus:ring-red"

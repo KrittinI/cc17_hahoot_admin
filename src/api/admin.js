@@ -12,6 +12,7 @@ adminApi.deleteTopic = async (id) => axios.post(`/topics/${id}`);
 
 
 adminApi.getAllData = async () => axios.get("/admin/")
+adminApi.createHero = async (formData) => axios.post("/admin/hero", formData)
 adminApi.updateHero = async (id) => axios.patch(`/admin/hero/${id}`)
 
 

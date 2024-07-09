@@ -25,10 +25,10 @@ export default function AdminFeed() {
         <h1 className='text-font-title sticky'> Topic list</h1>
         <hr className='shadow-2xl text-grey' />
         <div className='flex flex-col max-h-[330px] overflow-y-scroll gap-2'>
-          {topics.map((topic) => (
-            <Button bg={"white"} key={topic.id}>
-              <div className="flex items-center">
-                <img src={logo} alt="logo" className="w-8 mr-4" />
+          {topics?.map((topic) => (
+            <Button bg={'white'} key={topic.id}>
+              <div className='flex items-center'>
+                <img src={logo} alt='logo' className='w-8 mr-4' />
                 {topic.topicName}
               </div>
             </Button>

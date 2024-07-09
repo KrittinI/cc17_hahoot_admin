@@ -88,7 +88,7 @@ export default function RoomPage() {
     <>
       <div className='w-[65%] mx-auto'>
         <SplitScreen>
-          <RoomLeft rooms={rooms} topics={topics} />
+          <RoomLeft rooms={rooms} />
           <RoomRight rooms={rooms} topics={topics} />
         </SplitScreen>
       </div>

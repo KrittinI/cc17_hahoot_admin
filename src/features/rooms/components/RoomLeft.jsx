@@ -2,14 +2,12 @@ import Table from '../../../components/Table';
 import RowTableRooms from './RowTableRooms';
 import { useState } from 'react';
 
-export default function RoomLeft({ rooms, topics }) {
+export default function RoomLeft({ rooms }) {
   const newModel = rooms.map((room) => {
     const newEvent = {};
-    newEvent.id = room.id;
-    newEvent.title = room.title;
-    newEvent.creator = room.user.username;
-    newEvent.topicId = room.topicId;
-    newEvent.quizList = room._count.assignOfBridges;
+    newEvent.id = room.roomId;
+    newEvent.title = room.eventId;
+    newEvent.creator = room.participantId;
     return newEvent;
   });
   const [sortedData, setSortedData] = useState(newModel);
@@ -18,10 +16,10 @@ export default function RoomLeft({ rooms, topics }) {
     direction: true,
   });
   const roomsTable = [
-    { title: 'No', colSpan: 2, name: 'id' },
-    { title: 'Topic', colSpan: 2, name: 'topic' },
-    { title: 'Create by', colSpan: 2, name: 'creator' },
-    { title: 'Status', colSpan: 2, name: 'status' },
+    { title: 'Id', colSpan: 4, name: 'id' },
+    { title: 'Event', colSpan: 4, name: 'topic' },
+    { title: 'Participant', colSpan: 4, name: 'creator' },
+    // { title: 'Status', colSpan: 2, name: 'status' },
   ];
   const handleSort = (key, direction) => {
     setSortConfig({ key, direction: !direction });
@@ -44,21 +42,15 @@ export default function RoomLeft({ rooms, topics }) {
       <Table
         title={`Room`}
         header={roomsTable}
-        gridCols={'8'}
+        gridCols={'12'}
         handleSort={handleSort}
         sortConfig={sortConfig}
       >
         {sortedData.map((room) => (
           <RowTableRooms
             key={room.id}
-            item={[
-              room.id,
-              room.title,
-              room.creator,
-              topics[room.topicId - 1].topicName,
-              room.isActive,
-            ]}
-            gridRowTable={'8'}
+            item={[room.id, room.title, room.creator, room.isActive]}
+            gridRowTable={'12'}
           />
         ))}
       </Table>

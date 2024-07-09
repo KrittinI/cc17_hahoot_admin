@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from "../../../components/Modal";
 import BannedUser from "../../../components/BannedUser";
-import { LockIcon, UnlockIcon } from "../../../icons/Banned";
 import DeleteIcon from "../../../icons/delete";
 
 const gridMap = {

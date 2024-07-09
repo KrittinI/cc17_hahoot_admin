@@ -1,24 +1,30 @@
-import { useRef, useState } from 'react';
-import Button from '../../../components/Button';
-import Input from '../../../components/Input';
-import TextArea from '../../../components/TextArea';
-import SelectedQuestion from './SelectedQuestion';
-import adminApi from '../../../api/admin';
+import { useRef, useState } from "react";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import TextArea from "../../../components/TextArea";
+import SelectedQuestion from "./SelectedQuestion";
+import adminApi from "../../../api/admin";
+import ImageIcon from "../../../icons/Image";
 
 const initialInput = {
-  title: '',
-  description: '',
+  title: "",
+  description: "",
   quiz1: 0,
   quiz2: 0,
   quiz3: 0,
   quiz4: 0,
-  eventPicture: ''
+  eventPicture: "",
 };
 
-export default function CreateHeroForm({ setHeroContent, onSuccess, questions }) {
+export default function CreateHeroForm({
+  setHeroContent,
+  onSuccess,
+  questions,
+}) {
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [input, setInput] = useState(initialInput);
+  const [error, setError] = useState("")
 
   const handleImageClick = () => {
     fileInputRef.current.click();
@@ -26,6 +32,7 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, questions })
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setError("")
   };
 
   const handleFileChange = (e) => {
@@ -37,75 +44,112 @@ export default function CreateHeroForm({ setHeroContent, onSuccess, questions })
 
   const handleClickSave = async () => {
     try {
-      console.log(input);
+      if (!file || !input.title || !input.detail || !input.quiz1 || !input.quiz2 || !input.quiz3 || !input.quiz4) {
+        return setError("Please Fill All Form")
+      }
       const formData = new FormData()
       formData.append("eventPicture", file)
       formData.append("hero", JSON.stringify(input))
-      console.log(...formData);
       const res = await adminApi.createHero(formData)
       console.log(res);
-      setHeroContent({ ...input, eventPicture: URL.createObjectURL(file) })
+      setHeroContent({ ...res.data.hero })
       onSuccess()
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
-    <div className='flex flex-col gap-4'>
-      <div className='flex gap-6'>
-        <div className='w-[832px] h-[360px] bg-[#F8FAFF] gap-4 p-4 rounded-2xl grid grid-cols-5 '>
+    <div className="flex flex-col p-4">
+      <div className="flex gap-2">
+        <div className="w-[800px] h-[280px] gap-4 p-4 rounded-xl grid grid-cols-5 ">
           <div
-            role='button'
-            className='col-span-2 h-full bg-red flex justify-center items-center rounded-xl'
+            role="button"
+            className="col-span-2 h-full bg-grey flex justify-center items-center rounded-xl shadow-xl hover:bg-darkgrey"
             onClick={handleImageClick}
           >
             {file ? (
               <img
                 src={URL.createObjectURL(file)}
-                className=''
-                alt='Selected'
+                className="object-fill"
+                alt="Selected"
               />
             ) : (
-              <h1>Add image</h1>
+              <div className="flex flex-col justify-center items-center">
+                <div className="p-2 border-2 border-black rounded-md">
+                  <ImageIcon />
+                </div>
+
+                <div className="text-font-title-card">Add image</div>
+              </div>
             )}
           </div>
-          <div className='flex flex-col justify-between gap-3 col-span-3'>
+          <div className="flex flex-col justify-between gap-3 col-span-3">
             <Input
-              name='title'
-              placeholder='Title'
+              name="title"
+              placeholder="Title"
               value={input?.title}
               onChange={handleChangeInput}
             />
             <TextArea
-              name='description'
-              placeholder='Description'
-              value={input?.description}
+              name="detail"
+              placeholder="Description"
+              value={input?.detail}
               onChange={handleChangeInput}
             />
           </div>
           <input
-            type='file'
+            type="file"
             ref={fileInputRef}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             onChange={handleFileChange}
           />
         </div>
-        <div className='bg-[#F8FAFF] max-w-[400px] p-4 rounded-2xl flex flex-col gap-2'>
-          <div className='text-2xl'>My Quiz</div>
-          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz1`} value={input.quiz1} />
-          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz2`} value={input.quiz2} />
-          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz3`} value={input.quiz3} />
-          <SelectedQuestion questions={questions} onChange={handleChangeInput} name={`quiz4`} value={input.quiz4} />
+        <div className="max-w-[400px] rounded-xl flex flex-col gap-2 p-2">
+          <div className="text-font-title border-grey">My Quiz</div>
+          <SelectedQuestion
+            p={"2"}
+            questions={questions}
+            onChange={handleChangeInput}
+            name={`quiz1`}
+            value={input.quiz1}
+          />
+          <SelectedQuestion
+            p={"2"}
+            questions={questions}
+            onChange={handleChangeInput}
+            name={`quiz2`}
+            value={input.quiz2}
+          />
+          <SelectedQuestion
+            p={"2"}
+            questions={questions}
+            onChange={handleChangeInput}
+            name={`quiz3`}
+            value={input.quiz3}
+          />
+          <SelectedQuestion
+            p={"2"}
+            questions={questions}
+            onChange={handleChangeInput}
+            name={`quiz4`}
+            value={input.quiz4}
+          />
         </div>
       </div>
-      <div className='flex gap-4 justify-around '>
-        <Button bg={`green`} color={`white`} width={60} onClick={handleClickSave}>
-          SAVE
-        </Button>
+      <div className="flex p-4 gap-12 justify-start ">
         <Button bg={`black`} width={60} onClick={onSuccess}>
           Cancel
         </Button>
+        <Button
+          bg={`blue`}
+          color={`white`}
+          width={60}
+          onClick={handleClickSave}
+        >
+          Save
+        </Button>
+        {error && <h1 className="text-font-body text-darkred font-semibold flex items-center">{error}</h1>}
       </div>
     </div>
   );

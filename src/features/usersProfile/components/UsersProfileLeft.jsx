@@ -3,9 +3,9 @@ import Table from "../../../components/Table";
 import RowTableUser from "./RowTableUser";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function UsersProfileLeft({ users, onClick }) {
+export default function UsersProfileLeft({ users, onClick, selected }) {
     const { setUsers } = useAdmin()
-    const remodelUsers = users.map((user) => {
+    const remodelUsers = users?.map((user) => {
         const newModel = {}
         newModel.id = user.id
         newModel.username = user.username
@@ -33,7 +33,7 @@ export default function UsersProfileLeft({ users, onClick }) {
 
     const handleSort = (key, direction) => {
         setSortConfig({ key, direction: !direction });
-        const sortingData = sortedData.sort((a, b) => {
+        const sortingData = sortedData?.sort((a, b) => {
             if (direction) {
                 if (a[key] < b[key]) return 1
                 if (a[key] > b[key]) return -1
@@ -61,8 +61,9 @@ export default function UsersProfileLeft({ users, onClick }) {
     return (
         <div>
             <Table title={`Users`} header={userTable} handleSort={handleSort} gridCols={7} sortConfig={sortConfig}>
-                {sortedData.map((user, index) => (
+                {sortedData?.map((user, index) => (
                     <RowTableUser
+                        selected={selected}
                         onClick={onClick}
                         key={index}
                         user={user}

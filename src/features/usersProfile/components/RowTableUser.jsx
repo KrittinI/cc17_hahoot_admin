@@ -11,11 +11,10 @@ const gridMap = {
   12: "grid-cols-12",
 };
 
-export default function RowTableUser({ user, gridRowTable, onConfirm, onClick }) {
+export default function RowTableUser({ user, gridRowTable, onConfirm, onClick, selected }) {
   const [open, setOpen] = useState(false);
   const onAgree = () => {
     onConfirm(user.id);
-    console.log(user.isActive);
     if (user?.isActive) {
       adminApi.deactive(user?.id)
     } else {
@@ -25,8 +24,8 @@ export default function RowTableUser({ user, gridRowTable, onConfirm, onClick })
   };
   return (
     <div
-      className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}
-      onClick={() => onClick(["Events", "Questions"], [user.events, user.questions])}
+      className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b ${selected === user?.email ? "bg-lblue rounded-xl" : "bg-white hover:bg-lblue"}`}
+      onClick={() => onClick(user?.email, ["Events", "Questions"], [user.events, user.questions])}
       role="button"
     >
       <div className="col-span-1 text-font-body">{user?.id}</div>

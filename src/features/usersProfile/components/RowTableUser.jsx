@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../../../components/Modal";
 import BannedUser from "../../../components/BannedUser";
 import { LockIcon, UnlockIcon } from "../../../icons/Banned";
+import adminApi from "../../../api/admin";
 
 const gridMap = {
   6: "grid-cols-6",
@@ -10,26 +11,35 @@ const gridMap = {
   12: "grid-cols-12",
 };
 
-export default function RowTableUser({ item, gridRowTable, onConfirm }) {
+export default function RowTableUser({ user, gridRowTable, onConfirm, onClick }) {
   const [open, setOpen] = useState(false);
-
   const onAgree = () => {
-    onConfirm(item[0]);
+    onConfirm(user.id);
+    console.log(user.isActive);
+    if (user?.isActive) {
+      adminApi.deactive(user?.id)
+    } else {
+      adminApi.active(user?.id)
+    }
     setOpen(false);
   };
   return (
-    <div className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}>
-      <div className="col-span-1 text-font-body">{item[0]}</div>
-      <div className="col-span-1 text-font-body">{item[1]}</div>
-      <div className="col-span-2 text-font-body">{item[2]}</div>
-      <div className="col-span-1 text-font-body">{item[3]}</div>
-      <div className="col-span-1 text-font-body">{item[4]}</div>
+    <div
+      className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}
+      onClick={() => onClick(["Events", "Questions"], [user.events, user.questions])}
+      role="button"
+    >
+      <div className="col-span-1 text-font-body">{user?.id}</div>
+      <div className="col-span-1 text-font-body">{user?.username}</div>
+      <div className="col-span-2 text-font-body">{user?.email}</div>
+      <div className="col-span-1 text-font-body">{user?.questions}</div>
+      <div className="col-span-1 text-font-body">{user?.events}</div>
       <div role="button" className="col-span-1 text-font-body ">
         <div
           className="flex justify-center items-center text-center "
           onClick={() => setOpen(true)}
         >
-          {!item[5] ? <LockIcon /> : <UnlockIcon />}
+          {!user?.isActive ? <LockIcon /> : <UnlockIcon />}
         </div>
       </div>
       <div className="grid gap-4">
@@ -37,7 +47,7 @@ export default function RowTableUser({ item, gridRowTable, onConfirm }) {
           open={open}
           onClose={() => setOpen(false)}
           title={
-            item[5] ? (
+            user?.isActive ? (
               <div className="flex flex-col justify-center items-center gap-8">
                 <div className="w-[80%] text-center">Are you want to Ban this user</div>
                 <div className="w-[80px] h-[80px] border-4 border-red rounded-full justify-center items-center flex">
@@ -52,14 +62,14 @@ export default function RowTableUser({ item, gridRowTable, onConfirm }) {
                   <UnlockIcon size={12} />
                 </div>
               </div>
-            
+
             )
           }
         >
           <BannedUser
             onConfirm={onAgree}
             onCancel={() => setOpen(false)}
-            isActive={item[5]}
+            isActive={user?.isActive}
           />
         </Modal>
       </div>

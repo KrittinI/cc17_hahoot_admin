@@ -7,7 +7,7 @@ import { IoIosSettings } from 'react-icons/io';
 import { AiFillHome } from 'react-icons/ai';
 import { GrTransaction } from 'react-icons/gr';
 
-export default function AdminSideBar({ onClick }) {
+export default function AdminSideBar({ onClick, }) {
   const sideMenu = [
     {
       id: 1,

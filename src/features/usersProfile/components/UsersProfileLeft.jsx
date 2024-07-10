@@ -3,7 +3,7 @@ import Table from "../../../components/Table";
 import RowTableUser from "./RowTableUser";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function UsersProfileLeft({ users }) {
+export default function UsersProfileLeft({ users, onClick }) {
     const { setUsers } = useAdmin()
     const remodelUsers = users.map((user) => {
         const newModel = {}
@@ -26,8 +26,8 @@ export default function UsersProfileLeft({ users }) {
         { title: "No.", colSpan: 1, name: "id" },
         { title: "Username", colSpan: 1, name: "username" },
         { title: "E-Mail", colSpan: 2, name: "email" },
-        { title: "Event list", colSpan: 1, name: "events" },
         { title: "Quiz list", colSpan: 1, name: "questions" },
+        { title: "Event list", colSpan: 1, name: "events" },
         { title: "Status", colSpan: 1, name: "isActive" },
     ];
 
@@ -58,14 +58,14 @@ export default function UsersProfileLeft({ users }) {
         setSortedData(mockdata)
     }
 
-
     return (
         <div>
             <Table title={`Users`} header={userTable} handleSort={handleSort} gridCols={7} sortConfig={sortConfig}>
                 {sortedData.map((user, index) => (
                     <RowTableUser
+                        onClick={onClick}
                         key={index}
-                        item={[user.id, user.username, user.email, user.events, user.questions, user.isActive]}
+                        user={user}
                         gridRowTable={'7'}
                         onConfirm={handleClickChangeStatus}
                     />

@@ -36,15 +36,6 @@ export default function AdminMenu() {
       link: "/admin/user-profile",
     },
     {
-      id: 2,
-      name: "Events",
-      number: events?.length,
-      icon: (
-        <PiBagFill className="bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
-      ),
-      link: "/admin/event-list",
-    },
-    {
       id: 3,
       name: "Questions",
       number: questions?.length,
@@ -56,7 +47,15 @@ export default function AdminMenu() {
       ),
       link: "/admin/quiz-store",
     },
-
+    {
+      id: 2,
+      name: "Events",
+      number: events?.length,
+      icon: (
+        <PiBagFill className="bg-[#FFE0EB] text-[#FB7185] rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
+      ),
+      link: "/admin/event-list",
+    },
     {
       id: 5,
       name: "Rooms",

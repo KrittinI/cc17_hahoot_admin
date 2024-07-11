@@ -3,9 +3,9 @@ import Table from "../../../components/Table";
 import RowTableUser from "./RowTableUser";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function UsersProfileLeft({ users }) {
+export default function UsersProfileLeft({ users, onClick, selected }) {
     const { setUsers } = useAdmin()
-    const remodelUsers = users.map((user) => {
+    const remodelUsers = users?.map((user) => {
         const newModel = {}
         newModel.id = user.id
         newModel.username = user.username
@@ -26,14 +26,14 @@ export default function UsersProfileLeft({ users }) {
         { title: "No.", colSpan: 1, name: "id" },
         { title: "Username", colSpan: 1, name: "username" },
         { title: "E-Mail", colSpan: 2, name: "email" },
-        { title: "Event list", colSpan: 1, name: "events" },
         { title: "Quiz list", colSpan: 1, name: "questions" },
+        { title: "Event list", colSpan: 1, name: "events" },
         { title: "Status", colSpan: 1, name: "isActive" },
     ];
 
     const handleSort = (key, direction) => {
         setSortConfig({ key, direction: !direction });
-        const sortingData = sortedData.sort((a, b) => {
+        const sortingData = sortedData?.sort((a, b) => {
             if (direction) {
                 if (a[key] < b[key]) return 1
                 if (a[key] > b[key]) return -1
@@ -58,14 +58,15 @@ export default function UsersProfileLeft({ users }) {
         setSortedData(mockdata)
     }
 
-
     return (
         <div>
             <Table title={`Users`} header={userTable} handleSort={handleSort} gridCols={7} sortConfig={sortConfig}>
-                {sortedData.map((user, index) => (
+                {sortedData?.map((user, index) => (
                     <RowTableUser
+                        selected={selected}
+                        onClick={onClick}
                         key={index}
-                        item={[user.id, user.username, user.email, user.events, user.questions, user.isActive]}
+                        user={user}
                         gridRowTable={'7'}
                         onConfirm={handleClickChangeStatus}
                     />

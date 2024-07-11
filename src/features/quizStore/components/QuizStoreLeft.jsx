@@ -3,16 +3,24 @@ import Table from "../../../components/Table";
 import RowTableQuestions from "./RowTableQuestions";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function QuizStoreLeft({ questions, topics }) {
-  const { setQuestions } = useAdmin();
-  const newModel = questions.map((question) => {
-    const newEvent = {};
-    newEvent.id = question.id;
-    newEvent.title = question.question;
-    newEvent.creator = question.user.username;
-    newEvent.topicId = question.topicId;
-    newEvent.quizList = question._count.assignOfBridges;
-    return newEvent;
+export default function QuizStoreLeft({ questions, onClick, selected }) {
+  const { setQuestions, answerCorrect } = useAdmin();
+  const newModel = questions?.map((question) => {
+    const newQuestion = {};
+    newQuestion.id = question.id;
+    newQuestion.title = question.question;
+    newQuestion.creator = question.user.username;
+    newQuestion.topicId = question.topicId;
+    newQuestion.quizList = question._count.assignOfBridges;
+    const find = answerCorrect?.find((answer) => question.id === answer.questionId)
+    if (find) {
+      newQuestion.correct = find?._count.answer
+      newQuestion.incorrect = +question._count.AnswerOfBridge - +find?._count.answer
+    } else {
+      newQuestion.correct = 0
+      newQuestion.incorrect = 0
+    }
+    return newQuestion;
   });
   const [sortedData, setSortedData] = useState(newModel);
   const [sortConfig, setSortConfig] = useState({
@@ -24,7 +32,7 @@ export default function QuizStoreLeft({ questions, topics }) {
     { title: "Title", colSpan: 2, name: "title" },
     { title: "Create By", colSpan: 1, name: "creator" },
     { title: "Topic", colSpan: 1, name: "topicId" },
-    { title: "Using", colSpan: 1, name: "used" },
+    { title: "Using", colSpan: 1, name: "quizList" },
     { title: "Action", colSpan: 1, name: "action" },
   ];
   const handleSort = (key, direction) => {
@@ -71,14 +79,9 @@ export default function QuizStoreLeft({ questions, topics }) {
         {sortedData.map((question) => (
           <RowTableQuestions
             key={question.id}
-            item={[
-              question.id,
-              question.title,
-              question.creator,
-              topics[question.topicId - 1].topicName,
-              question.quizList,
-              question.isActive,
-            ]}
+            onClick={onClick}
+            selected={selected}
+            question={question}
             gridRowTable={"7"}
             onConfirm={handleClickChangeStatus}
           />

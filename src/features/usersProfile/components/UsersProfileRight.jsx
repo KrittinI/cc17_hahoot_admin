@@ -1,13 +1,7 @@
 import DoughnutChart from '../../../components/DoughnutChart'
-import AdminSideBar from '../../admin/components/AdminSideBar'
+import UserSideBar from './UserSideBar'
 
-export default function UserProfileRight({ users }) {
-    const activeUser = users?.reduce((a, c) => {
-        if (c?.isActive) return a += 1
-        return a
-    }, 0)
-    const lables = ["active", "inactive"];
-    const amount = [activeUser, users?.length - activeUser];
+export default function UserProfileRight({ lables, amount, onClick, selected }) {
     return (
         <div>
             <div className='flex flex-col gap-2'>
@@ -17,7 +11,7 @@ export default function UserProfileRight({ users }) {
                     </h1>
                     <DoughnutChart amount={amount} lables={lables} />
                 </div>
-                <AdminSideBar />
+                <UserSideBar onClick={onClick} selected={selected} />
             </div>
         </div>
     )

@@ -11,6 +11,7 @@ export default function AdminContextProvider({ children }) {
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [answerCorrect, setAnswerCorrect] = useState([])
   const [heroContent, setHeroContent] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,7 @@ export default function AdminContextProvider({ children }) {
       setEvents(res.data.events);
       setUsers(res.data.users);
       setRooms(res.data.rooms);
+      setAnswerCorrect(res.data.answerQuestion)
       setHeroContent(res.data.heros.find((hero) => hero.isActive));
     };
     fetchData();
@@ -41,6 +43,8 @@ export default function AdminContextProvider({ children }) {
     setUsers,
     setEvents,
     setRooms,
+    setAnswerCorrect,
+    answerCorrect
   };
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>

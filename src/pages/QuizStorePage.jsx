@@ -48,14 +48,14 @@ export default function QuizStorePage() {
     setDataAmount(amount)
   }
 
-  const handelSetMenuData = (select, lables) => {
+  const handelSetMenuData = (select) => {
     setSelected(select)
-    console.log('lables', lables)
-    console.log('mockLables[lables]', mockLables[lables])
-    console.log('mockAmount[lables]', mockAmount[lables])
+    console.log('lables', select)
+    console.log('mockLables[lables]', mockLables[select])
+    console.log('mockAmount[lables]', mockAmount[select])
 
-    setDataLabels(mockLables[lables])
-    setDataAmount(mockAmount[lables])
+    setDataLabels(mockLables[select])
+    setDataAmount(mockAmount[select])
   }
 
   return (

@@ -28,6 +28,17 @@ export default function AdminContextProvider({ children }) {
     };
     fetchData();
   }, []);
+
+  const roomEvent = {}
+
+  for (let room of rooms) {
+    if (roomEvent[room.eventId]) {
+      roomEvent[room.eventId]++
+    } else {
+      roomEvent[room.eventId] = 1
+    }
+  }
+
   const value = {
     topics,
     heros,
@@ -44,7 +55,8 @@ export default function AdminContextProvider({ children }) {
     setEvents,
     setRooms,
     setAnswerCorrect,
-    answerCorrect
+    answerCorrect,
+    roomEvent
   };
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>

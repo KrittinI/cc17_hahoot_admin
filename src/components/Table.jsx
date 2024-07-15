@@ -17,24 +17,22 @@ const colSpanMap = {
 export default function Table({ title, header, handleSort, gridCols, children, sortConfig }) {
 
   return (
-    <div>
-      <div className="bg-white p-4 rounded-xl">
-        <h1 className="bg-white text-font-title ">{title}</h1>
-        <div className={`grid ${gridMap[gridCols]} py-2 pl-1 text-center text-font-title-card text-[#718EBF] justify-around`}>
-          {header.map((table, index) => (
-            <div key={index} className={colSpanMap[table.colSpan]} role='button' onClick={() => handleSort(table.name, sortConfig.direction)}>
-              {table.title}
-              {sortConfig?.key === table.name
-                ? sortConfig?.direction
-                  ? ' ▲'
-                  : ' ▼'
-                : null}
-            </div>
-          ))}
-        </div>
-        <hr className="shadow-2" />
-        {children}
+    <div className="bg-white p-4 rounded-xl">
+      <h1 className="bg-white text-font-title ">{title}</h1>
+      <div className={`grid ${gridMap[gridCols]} py-2 pl-1 text-center text-font-title-card text-[#718EBF] justify-around`}>
+        {header.map((table, index) => (
+          <div key={index} className={colSpanMap[table.colSpan]} role='button' onClick={() => handleSort(table.name, sortConfig.direction)}>
+            {table.title}
+            {sortConfig?.key === table.name
+              ? sortConfig?.direction
+                ? ' ▲'
+                : ' ▼'
+              : null}
+          </div>
+        ))}
       </div>
+      <hr className="shadow-2" />
+      {children}
     </div>
   );
 }

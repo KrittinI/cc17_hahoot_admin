@@ -30,22 +30,6 @@ export default function AdminSideBar({ onClick, selected }) {
       icon: <BsCreditCard className='w-full h-full' />,
       name: 'Credit Cards ',
     },
-    {
-      id: 6,
-      icon: <GiReceiveMoney className='w-full h-full' />,
-      name: 'Loans',
-    },
-    {
-      id: 7,
-      icon: <FaScrewdriverWrench className='w-full h-full' />,
-      name: 'Services',
-    },
-    { id: 8, icon: 'X', name: 'My Privileges ' },
-    {
-      id: 9,
-      icon: <IoIosSettings className='w-full h-full' />,
-      name: 'Setting',
-    },
   ];
 
   return (

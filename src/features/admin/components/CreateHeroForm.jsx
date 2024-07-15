@@ -8,7 +8,7 @@ import ImageIcon from "../../../icons/Image";
 
 const initialInput = {
   title: "",
-  description: "",
+  detail: "",
   quiz1: 0,
   quiz2: 0,
   quiz3: 0,
@@ -51,7 +51,6 @@ export default function CreateHeroForm({
       formData.append("eventPicture", file)
       formData.append("hero", JSON.stringify(input))
       const res = await adminApi.createHero(formData)
-      console.log(res);
       setHeroContent({ ...res.data.hero })
       onSuccess()
     } catch (error) {

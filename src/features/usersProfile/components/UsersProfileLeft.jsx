@@ -3,7 +3,7 @@ import Table from "../../../components/Table";
 import RowTableUser from "./RowTableUser";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function UsersProfileLeft({ users, onClick, selected }) {
+export default function UsersProfileLeft({ users, onClick, selected, setDataAmount }) {
     const { setUsers } = useAdmin()
     const remodelUsers = users?.map((user) => {
         const newModel = {}
@@ -69,9 +69,11 @@ export default function UsersProfileLeft({ users, onClick, selected }) {
                         user={user}
                         gridRowTable={'7'}
                         onConfirm={handleClickChangeStatus}
+                        setDataAmount={setDataAmount}
                     />
                 ))}
             </Table>
         </div>
+
     )
 }

@@ -40,9 +40,6 @@ export default function QuizStorePage() {
   const [selected, setSelected] = useState("topic")
 
   const handleSetUserData = (select, labels, amount) => {
-    console.log(select);
-    console.log(labels);
-    console.log(amount);
     setSelected(select)
     setDataLabels(labels)
     setDataAmount(amount)

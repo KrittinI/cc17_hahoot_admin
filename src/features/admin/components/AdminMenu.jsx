@@ -3,13 +3,12 @@ import MenuTab from "../../../components/MenuTab";
 import { IoPerson } from "react-icons/io5";
 import { PiBagFill } from "react-icons/pi";
 import Logo from "../../../assets/icon-hh.png";
-import { FaDiceD6 } from "react-icons/fa";
 import { BsGraphUpArrow } from "react-icons/bs";
 import useAdmin from "../../../hooks/useAdmin";
 
 export default function AdminMenu() {
   const navigate = useNavigate();
-  const { users, questions, events, rooms } = useAdmin();
+  const { users, questions, events, } = useAdmin();
 
 
   const handleClick = (path) => {
@@ -56,15 +55,15 @@ export default function AdminMenu() {
       ),
       link: "/admin/event-list",
     },
-    {
-      id: 5,
-      name: "Rooms",
-      number: rooms?.length,
-      icon: (
-        <FaDiceD6 className="bg-gray-300 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
-      ),
-      link: "/admin/room",
-    },
+    // {
+    //   id: 5,
+    //   name: "Rooms",
+    //   number: rooms?.length,
+    //   icon: (
+    //     <FaDiceD6 className="bg-gray-300 text-black rounded-full p-[15px] w-[64px] h-[64px] flex justify-center align-middle" />
+    //   ),
+    //   link: "/admin/room",
+    // },
   ];
 
   return (

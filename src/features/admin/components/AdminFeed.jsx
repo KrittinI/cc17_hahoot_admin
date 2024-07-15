@@ -14,8 +14,8 @@ export default function AdminFeed() {
         <BarChart
           serverData={[
             users?.length,
-            events?.length,
             questions?.length,
+            events?.length,
             rooms?.length,
           ]}
         />

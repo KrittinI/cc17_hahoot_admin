@@ -1,9 +1,6 @@
 import SideBarTab from '../../../components/SideBarTab';
 import { IoPerson } from 'react-icons/io5';
 import { BsGraphUpArrow, BsCreditCard } from 'react-icons/bs';
-import { GiReceiveMoney } from 'react-icons/gi';
-import { FaScrewdriverWrench } from 'react-icons/fa6';
-import { IoIosSettings } from 'react-icons/io';
 import { AiFillHome } from 'react-icons/ai';
 import { GrTransaction } from 'react-icons/gr';
 

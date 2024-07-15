@@ -17,7 +17,7 @@ export default function UserProfilePage() {
   const isActiveAmount = [activeUser, users?.length - activeUser];
   const [dataLables, setDataLabels] = useState(mockLables.active)
   const [dataAmount, setDataAmount] = useState(isActiveAmount)
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState("active")
 
   const handleSetUserData = (select, labels, amount) => {
     setSelected(select)
@@ -34,7 +34,7 @@ export default function UserProfilePage() {
   return (
     <div className='w-[65%] mx-auto'>
       <SplitScreen >
-        <UsersProfileLeft users={users} onClick={handleSetUserData} selected={selected} />
+        <UsersProfileLeft users={users} onClick={handleSetUserData} selected={selected} setDataAmount={setDataAmount} />
         <UsersProfileRight users={users} lables={dataLables} amount={dataAmount} onClick={handelSetMenuData} selected={selected} />
       </SplitScreen>
     </div>

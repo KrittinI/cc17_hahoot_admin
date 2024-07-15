@@ -11,21 +11,42 @@ const gridMap = {
   12: "grid-cols-12",
 };
 
-export default function RowTableUser({ user, gridRowTable, onConfirm, onClick, selected }) {
+export default function RowTableUser({ user, gridRowTable, onConfirm, onClick, selected, setDataAmount }) {
+
   const [open, setOpen] = useState(false);
-  const onAgree = () => {
+
+  const onAgree = (e) => {
+    e.stopPropagation()
     onConfirm(user.id);
     if (user?.isActive) {
       adminApi.deactive(user?.id)
+      setDataAmount(prev => [prev[0] - 1, prev[1] + 1])
     } else {
       adminApi.active(user?.id)
+      setDataAmount(prev => [prev[0] + 1, prev[1] - 1])
     }
     setOpen(false);
   };
+
+  const handleClickRow = (e) => {
+    e.stopPropagation()
+    onClick(user?.email, ["Events", "Questions"], [user.events, user.questions])
+  }
+
+  const handleClickBanUser = (e) => {
+    e.stopPropagation()
+    setOpen(true)
+  }
+
+  const handleClose = (e) => {
+    e.stopPropagation()
+    setOpen(false)
+  }
+
   return (
     <div
       className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b ${selected === user?.email ? "bg-lblue rounded-xl" : "bg-white hover:bg-lblue"}`}
-      onClick={() => onClick(user?.email, ["Events", "Questions"], [user.events, user.questions])}
+      onClick={handleClickRow}
       role="button"
     >
       <div className="col-span-1 text-font-body">{user?.id}</div>
@@ -36,7 +57,7 @@ export default function RowTableUser({ user, gridRowTable, onConfirm, onClick, s
       <div role="button" className="col-span-1 text-font-body ">
         <div
           className="flex justify-center items-center text-center "
-          onClick={() => setOpen(true)}
+          onClick={handleClickBanUser}
         >
           {!user?.isActive ? <LockIcon /> : <UnlockIcon />}
         </div>
@@ -67,7 +88,7 @@ export default function RowTableUser({ user, gridRowTable, onConfirm, onClick, s
         >
           <BannedUser
             onConfirm={onAgree}
-            onCancel={() => setOpen(false)}
+            onCancel={handleClose}
             isActive={user?.isActive}
           />
         </Modal>

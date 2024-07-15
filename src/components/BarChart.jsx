@@ -18,7 +18,7 @@ ChartJS.register(
   Legend
 );
 
-export default function BarChart({ serverData, serverLabels = ['Users', 'Events', 'Questions', 'Rooms'] }) {
+export default function BarChart({ serverData, serverLabels = ['Users', 'Questions', 'Events', 'Rooms'] }) {
   const data = {
     labels: serverLabels,
     datasets: [
@@ -30,7 +30,7 @@ export default function BarChart({ serverData, serverLabels = ['Users', 'Events'
           '#4ADE80', // Green
           '#FB7185', // Red
           '#FFDA45', // Yellow
-         
+
         ],
         borderRadius: 20,
         barThickness: 40,

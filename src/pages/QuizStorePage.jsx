@@ -37,12 +37,9 @@ export default function QuizStorePage() {
 
   const [dataLables, setDataLabels] = useState(mockLables.topic)
   const [dataAmount, setDataAmount] = useState(mockAmount.topic)
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState("topic")
 
   const handleSetUserData = (select, labels, amount) => {
-    console.log(select);
-    console.log(labels);
-    console.log(amount);
     setSelected(select)
     setDataLabels(labels)
     setDataAmount(amount)
@@ -50,10 +47,6 @@ export default function QuizStorePage() {
 
   const handelSetMenuData = (select) => {
     setSelected(select)
-    console.log('lables', select)
-    console.log('mockLables[lables]', mockLables[select])
-    console.log('mockAmount[lables]', mockAmount[select])
-
     setDataLabels(mockLables[select])
     setDataAmount(mockAmount[select])
   }

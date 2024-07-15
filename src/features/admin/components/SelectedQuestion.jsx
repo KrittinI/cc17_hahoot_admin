@@ -17,7 +17,6 @@ export default function SelectedQuestion({
   const [selectQuestion, setSelectQuestion] = useState(null);
   const handleSelectQuestion = (e) => {
     const question = questions.find((quiz) => quiz.id === +e.target.value);
-    console.log(question);
     setSelectQuestion(question);
     onChange(e);
   };

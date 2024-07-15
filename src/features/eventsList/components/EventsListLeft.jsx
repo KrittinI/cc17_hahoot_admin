@@ -3,8 +3,9 @@ import Table from "../../../components/Table";
 import RowTableEvents from "./RowTableEvents";
 import useAdmin from "../../../hooks/useAdmin";
 
-export default function EventsListLeft({ events, topics }) {
-    const {setEvents} = useAdmin();
+export default function EventsListLeft({ events, onClick, selected }) {
+    const { setEvents, roomEvent } = useAdmin();
+
     const newModel = events.map(event => {
         const newEvent = {}
         newEvent.id = event.id
@@ -12,21 +13,29 @@ export default function EventsListLeft({ events, topics }) {
         newEvent.creator = event.user.username
         newEvent.topicId = event.topicId
         newEvent.quizList = event._count.assignOfBridges
+        if (roomEvent[event.id]) {
+            newEvent.using = roomEvent[event.id]
+        } else {
+            newEvent.using = 0
+        }
         return newEvent
     })
+
     const [sortedData, setSortedData] = useState(newModel)
     const [sortConfig, setSortConfig] = useState({
         key: null,
         direction: true,
     });
+
     const eventTable = [
         { title: "No.", colSpan: 1, name: "id" },
         { title: "Title", colSpan: 3, name: "title" },
         { title: "Create by", colSpan: 2, name: "creator" },
-        { title: "Topic", colSpan: 3, name: "topicId" },
-        { title: "Quiz list", colSpan: 1, name: "quizList" },
-        { title: "Action", colSpan: 2, name: "action" },
+        { title: "Topic", colSpan: 2, name: "topicId" },
+        { title: "Quiz list", colSpan: 2, name: "quizList" },
+        { title: "Using", colSpan: 2, name: "using" },
     ];
+
     const handleSort = (key, direction) => {
         setSortConfig({ key, direction: !direction });
         const sortingData = newModel.sort((a, b) => {
@@ -43,7 +52,6 @@ export default function EventsListLeft({ events, topics }) {
         setSortedData(sortingData)
     };
 
-
     const handleClickChangeStatus = (id) => {
         const data = [...events]
         const mockdata = [...sortedData]
@@ -54,13 +62,22 @@ export default function EventsListLeft({ events, topics }) {
         setEvents(data)
         setSortedData(mockdata)
     }
+
     return (
         <div>
-            <Table title={`Events`} header={eventTable} gridCols={'12'} handleSort={handleSort} sortConfig={sortConfig}>
+            <Table
+                title={`Events`}
+                header={eventTable}
+                gridCols={'12'}
+                handleSort={handleSort}
+                sortConfig={sortConfig}
+            >
                 {sortedData.map((event) =>
                     <RowTableEvents
                         key={event.id}
-                        item={[event.id, event.title, event.creator, topics[event.topicId - 1].topicName, event.quizList, event.isActive]}
+                        onClick={onClick}
+                        selected={selected}
+                        event={event}
                         gridRowTable={'12'}
                         onConfirm={handleClickChangeStatus}
                     />

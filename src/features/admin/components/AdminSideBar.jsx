@@ -1,9 +1,6 @@
 import SideBarTab from '../../../components/SideBarTab';
 import { IoPerson } from 'react-icons/io5';
 import { BsGraphUpArrow, BsCreditCard } from 'react-icons/bs';
-import { GiReceiveMoney } from 'react-icons/gi';
-import { FaScrewdriverWrench } from 'react-icons/fa6';
-import { IoIosSettings } from 'react-icons/io';
 import { AiFillHome } from 'react-icons/ai';
 import { GrTransaction } from 'react-icons/gr';
 
@@ -29,22 +26,6 @@ export default function AdminSideBar({ onClick, selected }) {
       id: 5,
       icon: <BsCreditCard className='w-full h-full' />,
       name: 'Credit Cards ',
-    },
-    {
-      id: 6,
-      icon: <GiReceiveMoney className='w-full h-full' />,
-      name: 'Loans',
-    },
-    {
-      id: 7,
-      icon: <FaScrewdriverWrench className='w-full h-full' />,
-      name: 'Services',
-    },
-    { id: 8, icon: 'X', name: 'My Privileges ' },
-    {
-      id: 9,
-      icon: <IoIosSettings className='w-full h-full' />,
-      name: 'Setting',
     },
   ];
 

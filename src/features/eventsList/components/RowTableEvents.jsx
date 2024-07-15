@@ -1,7 +1,4 @@
-import { useState } from "react";
-import Modal from "../../../components/Modal";
-import BannedUser from "../../../components/BannedUser";
-import DeleteIcon from "../../../icons/delete";
+import useAdmin from "../../../hooks/useAdmin";
 
 const gridMap = {
   6: "grid-cols-6",
@@ -10,51 +7,20 @@ const gridMap = {
   12: "grid-cols-12",
 };
 
-export default function RowTableEvents({ item, gridRowTable, onConfirm }) {
-  const [open, setOpen] = useState(false);
-
-  const onAgree = () => {
-    onConfirm(item[0]);
-    setOpen(false);
-  };
+export default function RowTableEvents({ event, gridRowTable, onClick, selected }) {
+  const { topics } = useAdmin()
 
   return (
-    <div className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b`}>
-      <div className="col-span-1 text-font-body">{item[0]}</div>
-      <div className="col-span-3 text-font-body">{item[1]}</div>
-      <div className="col-span-2 text-font-body">{item[2]}</div>
-      <div className="col-span-3 text-font-body">{item[3]}</div>
-      <div className="col-span-1 text-font-body">{item[4]}</div>
-      <div role="button" className="col-span-2 text-font-body ">
-        <div
-          className="flex justify-center items-center text-center "
-          onClick={() => setOpen(true)}
-        >
-          <DeleteIcon size={6} />
-        </div>
-      </div>
-      <div className="grid gap-4">
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          title={
-            <div className="flex flex-col justify-center items-center gap-8">
-              <div className="w-[80%] text-center">
-                Are you want to delete this event
-              </div>
-              <div className="w-[90px] h-[90px] border-4 border-red rounded-full justify-center items-center flex">
-                <DeleteIcon size={10} />
-              </div>
-            </div>
-          }
-        >
-          <BannedUser
-            onConfirm={onAgree}
-            onCancel={() => setOpen(false)}
-            isActive={item[5]}
-          />
-        </Modal>
-      </div>
+    <div
+      className={`grid ${gridMap[gridRowTable]} text-center py-4 border-b ${selected === event?.id ? "bg-lblue rounded-xl" : "bg-white hover:bg-lblue"}`}
+    // onClick={() => onClick(event.id,)}
+    >
+      <div className="col-span-1 text-font-body">{event.id}</div>
+      <div className="col-span-3 text-font-body">{event.title}</div>
+      <div className="col-span-2 text-font-body">{event.creator}</div>
+      <div className="col-span-2 text-font-body">{topics[event?.topicId - 1]?.topicName}</div>
+      <div className="col-span-2 text-font-body">{event.quizList}</div>
+      <div className="col-span-2 text-font-body">{event.using}</div>
     </div>
   );
 }
